@@ -1,0 +1,413 @@
+{
+  "schema_version": "1.0.0",
+  "meta": {
+    "report_id": "CAL-286F1D101B6C",
+    "generated_at": "2026-04-26T23:26:40Z",
+    "generator_version": "1.0.0",
+    "content_hash": "9b5d2c9808ef8b285a53515d479e8ae16797deab6a4c5c367005923b673403cd",
+    "artifacts_dir": "/tmp/tmp.LdST39azjw",
+    "producer_id": "sendoeth"
+  },
+  "stages": {
+    "DISCOVER": {
+      "stage_id": "DISCOVER",
+      "status": "PASSED",
+      "prerequisites": [],
+      "completion_criteria": [
+        {
+          "id": "CRI-DISC-1",
+          "description": "Producer found with reputation grade and endpoint present",
+          "met": true,
+          "evidence": "Producer found with grade and endpoint present"
+        }
+      ],
+      "checks": [
+        {
+          "check_id": "CHK-DISC-1",
+          "name": "Discovery result file exists and is valid JSON",
+          "passed": true,
+          "detail": "Found discovery_result.json",
+          "tool": "ArtifactScanner"
+        },
+        {
+          "check_id": "CHK-DISC-2",
+          "name": "At least one producer entry found",
+          "passed": true,
+          "detail": "1 producer(s) found",
+          "tool": "DiscoverEvaluator"
+        },
+        {
+          "check_id": "CHK-DISC-3",
+          "name": "Producer has a reputation grade (A-F)",
+          "passed": true,
+          "detail": "Grade: B",
+          "tool": "DiscoverEvaluator"
+        },
+        {
+          "check_id": "CHK-DISC-4",
+          "name": "Producer endpoint/URL is present and non-empty",
+          "passed": true,
+          "detail": "Endpoint: https://github.com/sendoeth/post-fiat-signals",
+          "tool": "DiscoverEvaluator"
+        },
+        {
+          "check_id": "CHK-DISC-5",
+          "name": "Producer has published signal schema reference",
+          "passed": true,
+          "detail": "Schema ref: 1.0.0",
+          "tool": "DiscoverEvaluator"
+        }
+      ],
+      "blockers": [],
+      "remediation": [],
+      "source_artifacts": [
+        {
+          "artifact_id": "ART-DISC-1",
+          "name": "pf-discovery-protocol",
+          "url": "https://github.com/sendoeth/pf-discovery-protocol",
+          "role": "Producer discovery and registry management"
+        }
+      ],
+      "receipt": {
+        "stage_hash": "eff93f01cf317bc24af9a5f987f36c0b52734aee7a781d7a33d8e0551074f72d",
+        "inputs_hash": "b9b6cbf5770edcb3254399266fc2b53bbc69ccd43a6602b9da260e8c286466df",
+        "timestamp": "2026-04-26T23:26:40Z",
+        "passed": true
+      }
+    },
+    "EVALUATE": {
+      "stage_id": "EVALUATE",
+      "status": "PASSED",
+      "prerequisites": [
+        {
+          "id": "PRE-EVAL-1",
+          "description": "DISCOVER stage must be PASSED",
+          "met": true
+        }
+      ],
+      "completion_criteria": [
+        {
+          "id": "CRI-EVAL-1",
+          "description": "Health grade C+ and trust verdict is ADOPT or ADOPT_WITH_CAVEATS",
+          "met": true,
+          "evidence": "Health grade C+ and trust verdict ADOPT or ADOPT_WITH_CAVEATS"
+        }
+      ],
+      "checks": [
+        {
+          "check_id": "CHK-EVAL-1",
+          "name": "Health report exists and is valid JSON",
+          "passed": true,
+          "detail": "health_report.json loaded",
+          "tool": "ArtifactScanner"
+        },
+        {
+          "check_id": "CHK-EVAL-2",
+          "name": "Health composite grade is C or better",
+          "passed": true,
+          "detail": "Health grade: B",
+          "tool": "EvaluateEvaluator"
+        },
+        {
+          "check_id": "CHK-EVAL-3",
+          "name": "No hard gate failures in health (liveness, schema)",
+          "passed": true,
+          "detail": "No hard gate failures detected",
+          "tool": "EvaluateEvaluator"
+        },
+        {
+          "check_id": "CHK-EVAL-4",
+          "name": "Trust evaluation exists and is valid JSON",
+          "passed": true,
+          "detail": "trust_evaluation.json loaded",
+          "tool": "ArtifactScanner"
+        },
+        {
+          "check_id": "CHK-EVAL-5",
+          "name": "Trust verdict is ADOPT or ADOPT_WITH_CAVEATS",
+          "passed": true,
+          "detail": "Verdict: ADOPT_WITH_CAVEATS",
+          "tool": "EvaluateEvaluator"
+        },
+        {
+          "check_id": "CHK-EVAL-6",
+          "name": "Risk factors are documented",
+          "passed": true,
+          "detail": "6 risk factor(s)",
+          "tool": "EvaluateEvaluator"
+        },
+        {
+          "check_id": "CHK-EVAL-7",
+          "name": "Integration checklist present in trust evaluation",
+          "passed": true,
+          "detail": "8 checklist item(s)",
+          "tool": "EvaluateEvaluator"
+        }
+      ],
+      "blockers": [],
+      "remediation": [],
+      "source_artifacts": [
+        {
+          "artifact_id": "ART-EVAL-1",
+          "name": "pf-health-monitor",
+          "url": "https://github.com/sendoeth/pf-health-monitor",
+          "role": "Producer health monitoring"
+        },
+        {
+          "artifact_id": "ART-EVAL-2",
+          "name": "pf-trust-gateway",
+          "url": "https://github.com/sendoeth/pf-trust-gateway",
+          "role": "Producer trust evaluation"
+        }
+      ],
+      "receipt": {
+        "stage_hash": "f58947609e6102f761931abdf0d43de97a71abaf816dcb009277bcc8f19393d7",
+        "inputs_hash": "7a8124c48562dbcc67f46aeea2b8bd57d82d950fc179278760f8fb89a7fd2a26",
+        "timestamp": "2026-04-26T23:26:40Z",
+        "passed": true
+      }
+    },
+    "INTEGRATE": {
+      "stage_id": "INTEGRATE",
+      "status": "BLOCKED",
+      "prerequisites": [
+        {
+          "id": "PRE-INTG-1",
+          "description": "EVALUATE stage must be PASSED",
+          "met": true
+        }
+      ],
+      "completion_criteria": [
+        {
+          "id": "CRI-INTG-1",
+          "description": "Acceptance READY/PARTIAL, signal sample valid, no critical blockers",
+          "met": false,
+          "evidence": null
+        }
+      ],
+      "checks": [
+        {
+          "check_id": "CHK-INTG-1",
+          "name": "Acceptance report exists and is valid JSON",
+          "passed": false,
+          "detail": "acceptance_report.json not found or invalid",
+          "tool": "ArtifactScanner"
+        },
+        {
+          "check_id": "CHK-INTG-2",
+          "name": "Acceptance verdict is READY or PARTIAL",
+          "passed": false,
+          "detail": "No acceptance verdict found",
+          "tool": "IntegrateEvaluator"
+        },
+        {
+          "check_id": "CHK-INTG-3",
+          "name": "Signal sample exists and is valid JSON",
+          "passed": false,
+          "detail": "signal_sample.json not found or invalid",
+          "tool": "ArtifactScanner"
+        },
+        {
+          "check_id": "CHK-INTG-4",
+          "name": "Signal sample contains at least 1 signal with required fields",
+          "passed": false,
+          "detail": "No signal sample to inspect",
+          "tool": "IntegrateEvaluator"
+        },
+        {
+          "check_id": "CHK-INTG-5",
+          "name": "Schema validation passes on signal sample",
+          "passed": false,
+          "detail": "No signal sample for schema validation",
+          "tool": "IntegrateEvaluator"
+        },
+        {
+          "check_id": "CHK-INTG-6",
+          "name": "Quickstart result exists OR acceptance connectivity PASS",
+          "passed": false,
+          "detail": "No quickstart result and no connectivity PASS in acceptance",
+          "tool": "IntegrateEvaluator"
+        },
+        {
+          "check_id": "CHK-INTG-7",
+          "name": "No CRITICAL blockers in acceptance report",
+          "passed": false,
+          "detail": "acceptance_report.json not available",
+          "tool": "IntegrateEvaluator"
+        }
+      ],
+      "blockers": [
+        {
+          "blocker_id": "BLK-INTG-1",
+          "severity": "CRITICAL",
+          "description": "acceptance_report.json not found or invalid",
+          "stage_blocked": "INTEGRATE"
+        },
+        {
+          "blocker_id": "BLK-INTG-2",
+          "severity": "CRITICAL",
+          "description": "No acceptance verdict found",
+          "stage_blocked": "INTEGRATE"
+        },
+        {
+          "blocker_id": "BLK-INTG-3",
+          "severity": "HIGH",
+          "description": "signal_sample.json not found or invalid",
+          "stage_blocked": "INTEGRATE"
+        },
+        {
+          "blocker_id": "BLK-INTG-4",
+          "severity": "HIGH",
+          "description": "No signal sample to inspect",
+          "stage_blocked": "INTEGRATE"
+        },
+        {
+          "blocker_id": "BLK-INTG-5",
+          "severity": "HIGH",
+          "description": "No signal sample for schema validation",
+          "stage_blocked": "INTEGRATE"
+        },
+        {
+          "blocker_id": "BLK-INTG-6",
+          "severity": "HIGH",
+          "description": "No quickstart result and no connectivity PASS in acceptance",
+          "stage_blocked": "INTEGRATE"
+        },
+        {
+          "blocker_id": "BLK-INTG-7",
+          "severity": "CRITICAL",
+          "description": "acceptance_report.json not available",
+          "stage_blocked": "INTEGRATE"
+        }
+      ],
+      "remediation": [
+        {
+          "remediation_id": "REM-INTG-1",
+          "command": "python3 acceptance_test.py --signal-sample signal_sample.json --health-report health_report.json -o acceptance_report.json",
+          "description": "Run acceptance test to verify integration readiness",
+          "resolves_blocker": "BLK-INTG-1"
+        }
+      ],
+      "source_artifacts": [
+        {
+          "artifact_id": "ART-INTG-1",
+          "name": "pf-acceptance-test",
+          "url": "https://github.com/sendoeth/pf-acceptance-test",
+          "role": "Integration acceptance testing"
+        },
+        {
+          "artifact_id": "ART-INTG-2",
+          "name": "pf-consumer-quickstart",
+          "url": "https://github.com/sendoeth/pf-consumer-quickstart",
+          "role": "Quick-start consumer integration"
+        },
+        {
+          "artifact_id": "ART-INTG-3",
+          "name": "pf-signal-schema",
+          "url": "https://github.com/sendoeth/pf-signal-schema",
+          "role": "Signal schema definition and validation"
+        }
+      ],
+      "receipt": {
+        "stage_hash": "e66e4cd2a5c865c3c91daa4abc29cc908c42f02c57f84c60fe71ea170b958e19",
+        "inputs_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "timestamp": "2026-04-26T23:26:40Z",
+        "passed": false
+      }
+    },
+    "MONITOR": {
+      "stage_id": "MONITOR",
+      "status": "NOT_REACHED",
+      "prerequisites": [],
+      "completion_criteria": [],
+      "checks": [],
+      "blockers": [],
+      "remediation": [],
+      "source_artifacts": [],
+      "receipt": {
+        "stage_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "inputs_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "timestamp": "2026-04-26T23:26:40Z",
+        "passed": false
+      }
+    },
+    "TRUST": {
+      "stage_id": "TRUST",
+      "status": "NOT_REACHED",
+      "prerequisites": [],
+      "completion_criteria": [],
+      "checks": [],
+      "blockers": [],
+      "remediation": [],
+      "source_artifacts": [],
+      "receipt": {
+        "stage_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "inputs_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "timestamp": "2026-04-26T23:26:40Z",
+        "passed": false
+      }
+    }
+  },
+  "current_stage": "EVALUATE",
+  "next_command": "python3 acceptance_test.py --signal-sample signal_sample.json --health-report health_report.json -o acceptance_report.json",
+  "progress_summary": {
+    "stages_passed": 2,
+    "stages_blocked": 1,
+    "stages_not_reached": 2,
+    "total_checks": 19,
+    "checks_passed": 12,
+    "completion_pct": 63.157895,
+    "grade": "D"
+  },
+  "hash_chain": {
+    "algorithm": "SHA-256",
+    "report_hash": "e6edb84ec8869a0d2dc4f7fa46489a4fb10815516a446f3411e253eebc36b5ca",
+    "previous_report_hash": null,
+    "chain_length": 1,
+    "stage_hashes": {
+      "DISCOVER": "eff93f01cf317bc24af9a5f987f36c0b52734aee7a781d7a33d8e0551074f72d",
+      "EVALUATE": "f58947609e6102f761931abdf0d43de97a71abaf816dcb009277bcc8f19393d7",
+      "INTEGRATE": "e66e4cd2a5c865c3c91daa4abc29cc908c42f02c57f84c60fe71ea170b958e19",
+      "MONITOR": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "TRUST": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "limitations": [
+    {
+      "id": "L01",
+      "description": "Artifact file detection by filename only \u2014 misnamed files silently missed.",
+      "bias_direction": "UNDERSTATED_READINESS",
+      "bias_magnitude": "MODERATE"
+    },
+    {
+      "id": "L02",
+      "description": "No live endpoint testing \u2014 checks static artifacts only, not live API connectivity.",
+      "bias_direction": "OVERSTATED_READINESS",
+      "bias_magnitude": "MODERATE"
+    },
+    {
+      "id": "L03",
+      "description": "Single snapshot \u2014 adoption ladder reflects a point-in-time, not continuous monitoring.",
+      "bias_direction": "INDETERMINATE",
+      "bias_magnitude": "LOW"
+    },
+    {
+      "id": "L04",
+      "description": "Threshold sensitivity \u2014 grade boundaries (health C, ECE 0.20, accuracy 50%) are conventions not proven optimal.",
+      "bias_direction": "INDETERMINATE",
+      "bias_magnitude": "MODERATE"
+    },
+    {
+      "id": "L05",
+      "description": "Sequential gating \u2014 a failure in DISCOVER blocks all subsequent stages, even if later-stage artifacts are present and healthy.",
+      "bias_direction": "UNDERSTATED_READINESS",
+      "bias_magnitude": "LOW"
+    },
+    {
+      "id": "L06",
+      "description": "Synthetic-only coverage \u2014 stage checks validate structure and thresholds, not end-to-end signal consumption.",
+      "bias_direction": "OVERSTATED_READINESS",
+      "bias_magnitude": "HIGH"
+    }
+  ]
+}
