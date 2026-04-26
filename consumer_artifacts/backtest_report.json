@@ -1,0 +1,505 @@
+{
+  "backtest_version": "1.0.0",
+  "meta": {
+    "report_id": "409ea47ad280427fbca3cf54dc45cbe5",
+    "generated_at": "2026-04-12T13:10:02.835Z",
+    "generator_version": "1.0.0",
+    "content_hash": "12741e0bf5050b7398a29781025e0961157872f51a25250c9b9794453a434750"
+  },
+  "source_artifacts": {
+    "signal_log": {
+      "url": "https://github.com/sendoeth/post-fiat-signals",
+      "description": "b1e55ed_signal_log.json \u2014 raw signal log from live b1e55ed oracle integration",
+      "record_count": 9056
+    },
+    "proof_surface": {
+      "url": "https://github.com/sendoeth/post-fiat-signals",
+      "description": "proof_surface.json \u2014 canonical proof surface with aggregate resolution stats"
+    },
+    "resolved_signals": {
+      "url": "https://github.com/sendoeth/pf-consumer-backtest",
+      "description": "resolved_signals.json \u2014 pre-resolved signal dataset with per-signal outcomes",
+      "date_range": {
+        "start": "2026-03-19",
+        "end": "2026-04-13"
+      },
+      "record_count": 8676
+    },
+    "price_source": {
+      "url": "https://finance.yahoo.com",
+      "description": "Yahoo Finance hourly OHLCV \u2014 nearest hourly close at signal time and horizon end"
+    }
+  },
+  "strategies": {
+    "follow_all": {
+      "name": "Follow All",
+      "description": "Accept all signals without filtering. Baseline strategy.",
+      "filter_criteria": {
+        "filter": "none",
+        "min_confidence": 0.0
+      },
+      "signals_included": 8676,
+      "signals_excluded": 0,
+      "metrics": {
+        "accuracy": 0.520862,
+        "brier_score": 0.248519,
+        "hit_count": 4519,
+        "miss_count": 4157,
+        "total": 8676,
+        "mean_confidence": 0.529018,
+        "karma": 0.001481,
+        "max_drawdown_streak": 35,
+        "best_streak": 35
+      },
+      "per_symbol": {
+        "BTC": {
+          "accuracy": 0.558579,
+          "total": 2168,
+          "hit_count": 1211,
+          "brier_score": 0.245825
+        },
+        "ETH": {
+          "accuracy": 0.541052,
+          "total": 2168,
+          "hit_count": 1173,
+          "brier_score": 0.248538
+        },
+        "LINK": {
+          "accuracy": 0.512431,
+          "total": 2172,
+          "hit_count": 1113,
+          "brier_score": 0.249407
+        },
+        "SOL": {
+          "accuracy": 0.471402,
+          "total": 2168,
+          "hit_count": 1022,
+          "brier_score": 0.250304
+        }
+      }
+    },
+    "high_confidence": {
+      "name": "High Confidence",
+      "description": "Only accept signals with confidence >= 0.55. Filters out low-conviction calls.",
+      "filter_criteria": {
+        "filter": "confidence_floor",
+        "min_confidence": 0.55
+      },
+      "signals_included": 2161,
+      "signals_excluded": 6515,
+      "metrics": {
+        "accuracy": 0.560389,
+        "brier_score": 0.246591,
+        "hit_count": 1211,
+        "miss_count": 950,
+        "total": 2161,
+        "mean_confidence": 0.5758,
+        "karma": 0.003409,
+        "max_drawdown_streak": 228,
+        "best_streak": 192
+      },
+      "per_symbol": {
+        "BTC": {
+          "accuracy": 0.560389,
+          "total": 2161,
+          "hit_count": 1211,
+          "brier_score": 0.246591
+        }
+      }
+    },
+    "top_symbols": {
+      "name": "Top Symbols Only",
+      "description": "Exclude SOL (weakest symbol at 47.1% accuracy). Accept BTC, ETH, LINK only.",
+      "filter_criteria": {
+        "filter": "symbol_whitelist",
+        "symbols": [
+          "BTC",
+          "ETH",
+          "LINK"
+        ]
+      },
+      "signals_included": 6508,
+      "signals_excluded": 2168,
+      "metrics": {
+        "accuracy": 0.537339,
+        "brier_score": 0.247924,
+        "hit_count": 3497,
+        "miss_count": 3011,
+        "total": 6508,
+        "mean_confidence": 0.534028,
+        "karma": 0.002076,
+        "max_drawdown_streak": 649,
+        "best_streak": 339
+      },
+      "per_symbol": {
+        "BTC": {
+          "accuracy": 0.558579,
+          "total": 2168,
+          "hit_count": 1211,
+          "brier_score": 0.245825
+        },
+        "ETH": {
+          "accuracy": 0.541052,
+          "total": 2168,
+          "hit_count": 1173,
+          "brier_score": 0.248538
+        },
+        "LINK": {
+          "accuracy": 0.512431,
+          "total": 2172,
+          "hit_count": 1113,
+          "brier_score": 0.249407
+        }
+      }
+    },
+    "calibrated_only": {
+      "name": "Calibrated Only",
+      "description": "Exclude pre-calibration signals (method=unknown). Only accept signals from the calibrated engine.",
+      "filter_criteria": {
+        "filter": "method_whitelist",
+        "methods": [
+          "calibrated"
+        ]
+      },
+      "signals_included": 8648,
+      "signals_excluded": 28,
+      "metrics": {
+        "accuracy": 0.522317,
+        "brier_score": 0.249102,
+        "hit_count": 4517,
+        "miss_count": 4131,
+        "total": 8648,
+        "mean_confidence": 0.530343,
+        "karma": 0.000898,
+        "max_drawdown_streak": 35,
+        "best_streak": 35
+      },
+      "per_symbol": {
+        "BTC": {
+          "accuracy": 0.560389,
+          "total": 2161,
+          "hit_count": 1211,
+          "brier_score": 0.246591
+        },
+        "ETH": {
+          "accuracy": 0.542342,
+          "total": 2161,
+          "hit_count": 1172,
+          "brier_score": 0.248944
+        },
+        "LINK": {
+          "accuracy": 0.513626,
+          "total": 2165,
+          "hit_count": 1112,
+          "brier_score": 0.249817
+        },
+        "SOL": {
+          "accuracy": 0.472929,
+          "total": 2161,
+          "hit_count": 1022,
+          "brier_score": 0.251054
+        }
+      }
+    },
+    "conservative": {
+      "name": "Conservative Filter",
+      "description": "High confidence (>=0.55) + exclude SOL. Maximum selectivity for quality over volume.",
+      "filter_criteria": {
+        "filter": "combined",
+        "min_confidence": 0.55,
+        "symbols": [
+          "BTC",
+          "ETH",
+          "LINK"
+        ]
+      },
+      "signals_included": 2161,
+      "signals_excluded": 6515,
+      "metrics": {
+        "accuracy": 0.560389,
+        "brier_score": 0.246591,
+        "hit_count": 1211,
+        "miss_count": 950,
+        "total": 2161,
+        "mean_confidence": 0.5758,
+        "karma": 0.003409,
+        "max_drawdown_streak": 228,
+        "best_streak": 192
+      },
+      "per_symbol": {
+        "BTC": {
+          "accuracy": 0.560389,
+          "total": 2161,
+          "hit_count": 1211,
+          "brier_score": 0.246591
+        }
+      }
+    },
+    "sol_invert": {
+      "name": "SOL Invert",
+      "description": "Follow all signals but invert SOL direction (bearish->bullish, bullish->bearish). Based on weak-symbol analysis showing SOL as anti-signal.",
+      "filter_criteria": {
+        "filter": "direction_invert",
+        "invert_symbols": [
+          "SOL"
+        ]
+      },
+      "signals_included": 8676,
+      "signals_excluded": 0,
+      "metrics": {
+        "accuracy": 0.535154,
+        "brier_score": 0.248695,
+        "hit_count": 4643,
+        "miss_count": 4033,
+        "total": 8676,
+        "mean_confidence": 0.529018,
+        "karma": 0.001305,
+        "max_drawdown_streak": 865,
+        "best_streak": 452
+      },
+      "per_symbol": {
+        "BTC": {
+          "accuracy": 0.558579,
+          "total": 2168,
+          "hit_count": 1211,
+          "brier_score": 0.245825
+        },
+        "ETH": {
+          "accuracy": 0.541052,
+          "total": 2168,
+          "hit_count": 1173,
+          "brier_score": 0.248538
+        },
+        "LINK": {
+          "accuracy": 0.512431,
+          "total": 2172,
+          "hit_count": 1113,
+          "brier_score": 0.249407
+        },
+        "SOL": {
+          "accuracy": 0.528598,
+          "total": 2168,
+          "hit_count": 1146,
+          "brier_score": 0.251007
+        }
+      }
+    },
+    "quality_gate": {
+      "name": "Quality Gate",
+      "description": "Only accept signals marked as GOOD quality by the calibration engine. Excludes MARGINAL and POOR.",
+      "filter_criteria": {
+        "filter": "quality_whitelist",
+        "quality": [
+          "GOOD"
+        ]
+      },
+      "signals_included": 2161,
+      "signals_excluded": 6515,
+      "metrics": {
+        "accuracy": 0.560389,
+        "brier_score": 0.246591,
+        "hit_count": 1211,
+        "miss_count": 950,
+        "total": 2161,
+        "mean_confidence": 0.5758,
+        "karma": 0.003409,
+        "max_drawdown_streak": 228,
+        "best_streak": 192
+      },
+      "per_symbol": {
+        "BTC": {
+          "accuracy": 0.560389,
+          "total": 2161,
+          "hit_count": 1211,
+          "brier_score": 0.246591
+        }
+      }
+    }
+  },
+  "comparison_matrix": {
+    "fields": [
+      "accuracy",
+      "brier_score",
+      "karma",
+      "total",
+      "mean_confidence",
+      "hit_count",
+      "max_drawdown_streak",
+      "best_streak"
+    ],
+    "rankings": {
+      "calibrated_only": {
+        "accuracy": 0.522317,
+        "brier_score": 0.249102,
+        "karma": 0.000898,
+        "total": 8648,
+        "mean_confidence": 0.530343,
+        "hit_count": 4517,
+        "max_drawdown_streak": 35,
+        "best_streak": 35
+      },
+      "conservative": {
+        "accuracy": 0.560389,
+        "brier_score": 0.246591,
+        "karma": 0.003409,
+        "total": 2161,
+        "mean_confidence": 0.5758,
+        "hit_count": 1211,
+        "max_drawdown_streak": 228,
+        "best_streak": 192
+      },
+      "follow_all": {
+        "accuracy": 0.520862,
+        "brier_score": 0.248519,
+        "karma": 0.001481,
+        "total": 8676,
+        "mean_confidence": 0.529018,
+        "hit_count": 4519,
+        "max_drawdown_streak": 35,
+        "best_streak": 35
+      },
+      "high_confidence": {
+        "accuracy": 0.560389,
+        "brier_score": 0.246591,
+        "karma": 0.003409,
+        "total": 2161,
+        "mean_confidence": 0.5758,
+        "hit_count": 1211,
+        "max_drawdown_streak": 228,
+        "best_streak": 192
+      },
+      "quality_gate": {
+        "accuracy": 0.560389,
+        "brier_score": 0.246591,
+        "karma": 0.003409,
+        "total": 2161,
+        "mean_confidence": 0.5758,
+        "hit_count": 1211,
+        "max_drawdown_streak": 228,
+        "best_streak": 192
+      },
+      "sol_invert": {
+        "accuracy": 0.535154,
+        "brier_score": 0.248695,
+        "karma": 0.001305,
+        "total": 8676,
+        "mean_confidence": 0.529018,
+        "hit_count": 4643,
+        "max_drawdown_streak": 865,
+        "best_streak": 452
+      },
+      "top_symbols": {
+        "accuracy": 0.537339,
+        "brier_score": 0.247924,
+        "karma": 0.002076,
+        "total": 6508,
+        "mean_confidence": 0.534028,
+        "hit_count": 3497,
+        "max_drawdown_streak": 649,
+        "best_streak": 339
+      }
+    },
+    "best_strategy": {
+      "by_accuracy": "high_confidence",
+      "by_brier": "high_confidence",
+      "by_karma": "high_confidence",
+      "by_volume": "follow_all"
+    }
+  },
+  "risk_profiles": {
+    "conservative": {
+      "description": "Maximum selectivity: high confidence, top symbols only, skip SYSTEMIC regime. Lowest volume but highest expected accuracy.",
+      "recommended_strategy": "conservative",
+      "rationale": "Accuracy 56.0% with drawdown streak capped at 228. Excludes SOL (anti-signal) and SYSTEMIC (suppresses edges).",
+      "confidence_floor": 0.55,
+      "symbols": [
+        "BTC",
+        "ETH",
+        "LINK"
+      ],
+      "expected_accuracy": 0.560389,
+      "expected_volume_per_day": 90.0
+    },
+    "balanced": {
+      "description": "Best risk-adjusted return: optimizes karma (accuracy excess over baseline). Good accuracy-to-volume tradeoff.",
+      "recommended_strategy": "high_confidence",
+      "rationale": "Karma 0.003409 \u2014 best quality-adjusted score. Accuracy 56.0% on 2161 signals.",
+      "confidence_floor": 0.0,
+      "symbols": [
+        "BTC",
+        "ETH",
+        "SOL",
+        "LINK"
+      ],
+      "expected_accuracy": 0.560389,
+      "expected_volume_per_day": 90.0
+    },
+    "aggressive": {
+      "description": "Maximum signal volume: accept everything. Lowest selectivity but no signals missed.",
+      "recommended_strategy": "follow_all",
+      "rationale": "All 8676 signals consumed. Accuracy 52.1%. SOL drag (-2.9% vs baseline) accepted for volume.",
+      "confidence_floor": 0.0,
+      "symbols": [
+        "BTC",
+        "ETH",
+        "SOL",
+        "LINK"
+      ],
+      "expected_accuracy": 0.520862,
+      "expected_volume_per_day": 361.5
+    }
+  },
+  "verdict": {
+    "decision": "ADOPT",
+    "confidence": 0.5604,
+    "rationale": "Best strategy accuracy 56.0% exceeds 55% threshold on 8676 signals. Sufficient volume and accuracy for production consumption.",
+    "caveats": [
+      "SOL signals show anti-signal behavior (47.1% accuracy) \u2014 consider excluding or inverting",
+      "Conservative filter improves accuracy to 56.0% \u2014 consider selective consumption"
+    ]
+  },
+  "hash_chain": {
+    "algorithm": "SHA-256",
+    "content_hash": "12741e0bf5050b7398a29781025e0961157872f51a25250c9b9794453a434750",
+    "previous_report_hash": null,
+    "chain_length": 1
+  },
+  "limitations": [
+    {
+      "id": "L1",
+      "description": "Backtest uses nearest hourly close price for resolution; intra-hour volatility may change outcomes for signals near price reversals",
+      "bias_direction": "INDETERMINATE",
+      "bias_magnitude": "LOW"
+    },
+    {
+      "id": "L2",
+      "description": "All strategies are evaluated in-sample against the same resolved dataset; out-of-sample performance may differ",
+      "bias_direction": "OVERSTATED_PERFORMANCE",
+      "bias_magnitude": "MODERATE"
+    },
+    {
+      "id": "L3",
+      "description": "Karma calculation uses base_rate=0.5 assumption; actual base rates vary by symbol (0.44-0.57) which affects karma magnitude",
+      "bias_direction": "INDETERMINATE",
+      "bias_magnitude": "LOW"
+    },
+    {
+      "id": "L4",
+      "description": "Strategy filters are applied independently; combined filters (e.g. confidence + regime) may interact non-linearly",
+      "bias_direction": "INDETERMINATE",
+      "bias_magnitude": "LOW"
+    },
+    {
+      "id": "L5",
+      "description": "Streak analysis treats each signal independently; temporal clustering of hits/misses is not modeled",
+      "bias_direction": "UNDERSTATED_PERFORMANCE",
+      "bias_magnitude": "LOW"
+    },
+    {
+      "id": "L6",
+      "description": "SOL signals show persistent negative accuracy (47.1%); INVERT strategy inverts SOL direction but this is a post-hoc optimization on in-sample data",
+      "bias_direction": "OVERSTATED_PERFORMANCE",
+      "bias_magnitude": "HIGH"
+    }
+  ]
+}

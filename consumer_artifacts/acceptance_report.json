@@ -1,0 +1,455 @@
+{
+  "test_version": "1.0.0",
+  "meta": {
+    "test_id": "AT-20260410T141318Z",
+    "generated_at": "2026-04-10T14:13:18.666Z",
+    "generator_version": "1.0.0",
+    "content_hash": "5d79317ac9208959ac152b1fcde4c5081360fae0786fcc5c5889098ab1ee29f9",
+    "previous_test_hash": null
+  },
+  "endpoint_config": {
+    "producer_endpoint": "http://localhost:8080",
+    "poll_interval_seconds": 900,
+    "test_mode": "REFERENCE",
+    "timeout_seconds": 30,
+    "signal_schema_version": "1.0.0"
+  },
+  "producer": {
+    "producer_id": "post-fiat-signals",
+    "wallet": "rfLJ4ZRnqmGFLAcMvCD56nKGbjpdTJmMqo",
+    "public_url": "https://github.com/sendoeth/post-fiat-signals"
+  },
+  "checks": {
+    "connectivity": {
+      "check_id": "connectivity",
+      "status": "PASS",
+      "score": 1.0,
+      "weight": 0.15,
+      "details": {
+        "description": "Validates signal data accessibility and endpoint configuration.",
+        "evidence": {
+          "loaded": true,
+          "signal_count": 1,
+          "endpoint": "http://localhost:8080"
+        },
+        "sub_checks": [
+          {
+            "name": "signal_data_loadable",
+            "passed": true,
+            "detail": "Signal sample loaded successfully."
+          },
+          {
+            "name": "signal_data_non_empty",
+            "passed": true,
+            "detail": "Found 1 signal(s) in sample."
+          },
+          {
+            "name": "endpoint_configured",
+            "passed": true,
+            "detail": "Endpoint configured: http://localhost:8080"
+          }
+        ]
+      },
+      "remediation_hint": null,
+      "hard_gate": true,
+      "duration_ms": 0.01
+    },
+    "schema_compliance": {
+      "check_id": "schema_compliance",
+      "status": "PASS",
+      "score": 1.0,
+      "weight": 0.2,
+      "details": {
+        "description": "Validates signal structure against canonical schema.",
+        "evidence": {
+          "signals_checked": 1,
+          "valid_signals": 1,
+          "field_coverage": {
+            "signal_id": 1,
+            "producer_id": 1,
+            "timestamp": 1,
+            "symbol": 1,
+            "direction": 1,
+            "confidence": 1,
+            "horizon_hours": 1,
+            "schema_version": 1
+          }
+        },
+        "sub_checks": [
+          {
+            "name": "required_fields_present",
+            "passed": true,
+            "detail": "1/1 signals have all required fields."
+          },
+          {
+            "name": "direction_enum_valid",
+            "passed": true,
+            "detail": "1/1 signals have valid direction (bullish/bearish)."
+          },
+          {
+            "name": "confidence_bounded",
+            "passed": true,
+            "detail": "1/1 signals have confidence in [0, 1]."
+          },
+          {
+            "name": "schema_version_semver",
+            "passed": true,
+            "detail": "1/1 signals have valid semver schema_version."
+          },
+          {
+            "name": "action_field_present",
+            "passed": true,
+            "detail": "1/1 signals have valid action field."
+          },
+          {
+            "name": "attribution_hash_present",
+            "passed": true,
+            "detail": "1/1 signals have SHA-256 attribution_hash."
+          },
+          {
+            "name": "symbol_format",
+            "passed": true,
+            "detail": "1/1 signals have uppercase symbol."
+          }
+        ]
+      },
+      "remediation_hint": null,
+      "hard_gate": true,
+      "duration_ms": 0.19
+    },
+    "freshness": {
+      "check_id": "freshness",
+      "status": "WARN",
+      "score": 0.6667,
+      "weight": 0.15,
+      "details": {
+        "description": "Validates signal timestamps are within acceptable freshness window.",
+        "evidence": {
+          "min_age_hours": 292.22,
+          "max_age_hours": 292.22,
+          "mean_age_hours": 292.22,
+          "freshness_grade": "EXPIRED",
+          "signals_checked": 1
+        },
+        "sub_checks": [
+          {
+            "name": "timestamps_parseable",
+            "passed": true,
+            "detail": "1/1 signals have parseable ISO timestamps."
+          },
+          {
+            "name": "freshness_grade",
+            "passed": false,
+            "detail": "Freshness: EXPIRED (newest signal 292.2h old)."
+          },
+          {
+            "name": "no_future_timestamps",
+            "passed": true,
+            "detail": "No future timestamps detected (min age: 292.22h)."
+          }
+        ]
+      },
+      "remediation_hint": "Ensure signals are generated within 15 minutes of current time.",
+      "hard_gate": false,
+      "duration_ms": 0.02
+    },
+    "cadence": {
+      "check_id": "cadence",
+      "status": "WARN",
+      "score": 0.75,
+      "weight": 0.1,
+      "details": {
+        "description": "Validates signal delivery cadence and continuity.",
+        "evidence": {
+          "uptime_ratio": 1.0,
+          "streak_days": 23,
+          "liveness_status": "RECENT",
+          "symbols": [
+            "BTC"
+          ]
+        },
+        "sub_checks": [
+          {
+            "name": "uptime_ratio_acceptable",
+            "passed": true,
+            "detail": "Uptime ratio: 100.0% (threshold: 90%)."
+          },
+          {
+            "name": "streak_active",
+            "passed": true,
+            "detail": "Current delivery streak: 23 day(s)."
+          },
+          {
+            "name": "liveness_status",
+            "passed": true,
+            "detail": "Liveness status: RECENT."
+          },
+          {
+            "name": "multi_symbol_delivery",
+            "passed": false,
+            "detail": "1 symbol(s) in sample: BTC."
+          }
+        ]
+      },
+      "remediation_hint": "Check producer health \u2014 ensure uptime >= 90% and active delivery streak.",
+      "hard_gate": false,
+      "duration_ms": 0.02
+    },
+    "resolution_dry_run": {
+      "check_id": "resolution_dry_run",
+      "status": "PASS",
+      "score": 1.0,
+      "weight": 0.15,
+      "details": {
+        "description": "Dry-runs signal resolution against proof surface data.",
+        "evidence": {
+          "test_signal": {
+            "symbol": "BTC",
+            "direction": "bullish",
+            "confidence": 0.53,
+            "horizon_hours": 24
+          },
+          "proof_surface_signals": 532,
+          "symbol_accuracy": 0.5094,
+          "total_resolved": 2128
+        },
+        "sub_checks": [
+          {
+            "name": "resolvable_fields",
+            "passed": true,
+            "detail": "Signal has all fields needed for resolution: True."
+          },
+          {
+            "name": "symbol_in_proof_surface",
+            "passed": true,
+            "detail": "BTC found in proof surface with 532 resolved signals."
+          },
+          {
+            "name": "karma_expectation",
+            "passed": true,
+            "detail": "BTC accuracy 50.9% \u2192 expected karma: positive."
+          },
+          {
+            "name": "proof_surface_populated",
+            "passed": true,
+            "detail": "Proof surface has 2128 resolved signals."
+          }
+        ]
+      },
+      "remediation_hint": null,
+      "hard_gate": false,
+      "duration_ms": 0.01
+    },
+    "trust_precheck": {
+      "check_id": "trust_precheck",
+      "status": "PASS",
+      "score": 1.0,
+      "weight": 0.15,
+      "details": {
+        "description": "Validates trust level meets minimum threshold for integration.",
+        "evidence": {
+          "recommendation": "ADOPT_WITH_CAVEATS",
+          "trust_score": null,
+          "trust_grade": "C",
+          "health_score": 0.722312,
+          "health_grade": "B",
+          "hard_gates_passed": 3,
+          "hard_gates_total": 3
+        },
+        "sub_checks": [
+          {
+            "name": "trust_verdict_available",
+            "passed": true,
+            "detail": "Trust verdict: ADOPT_WITH_CAVEATS."
+          },
+          {
+            "name": "trust_not_avoid",
+            "passed": true,
+            "detail": "Trust recommendation is ADOPT_WITH_CAVEATS (not AVOID)."
+          },
+          {
+            "name": "health_score_adequate",
+            "passed": true,
+            "detail": "Health score 72.2% >= 50% threshold."
+          },
+          {
+            "name": "hard_gates_clear",
+            "passed": true,
+            "detail": "Hard gates: 3/3 passed."
+          }
+        ]
+      },
+      "remediation_hint": null,
+      "hard_gate": false,
+      "duration_ms": 0.01
+    },
+    "monitoring_wiring": {
+      "check_id": "monitoring_wiring",
+      "status": "PASS",
+      "score": 1.0,
+      "weight": 0.1,
+      "details": {
+        "description": "Validates monitoring thresholds and escalation policy are configured.",
+        "evidence": {
+          "threshold_count": 9,
+          "critical_thresholds": 4,
+          "escalation_levels": 3,
+          "check_interval": 1
+        },
+        "sub_checks": [
+          {
+            "name": "thresholds_defined",
+            "passed": true,
+            "detail": "9 alert threshold(s) configured."
+          },
+          {
+            "name": "thresholds_well_formed",
+            "passed": true,
+            "detail": "9/9 thresholds are well-formed."
+          },
+          {
+            "name": "critical_thresholds_present",
+            "passed": true,
+            "detail": "4 CRITICAL threshold(s) defined."
+          },
+          {
+            "name": "escalation_defined",
+            "passed": true,
+            "detail": "3 escalation level(s) configured."
+          },
+          {
+            "name": "re_evaluation_trigger",
+            "passed": true,
+            "detail": "Re-evaluation trigger defined."
+          },
+          {
+            "name": "check_interval_set",
+            "passed": true,
+            "detail": "Check interval: 1."
+          }
+        ]
+      },
+      "remediation_hint": null,
+      "hard_gate": false,
+      "duration_ms": 0.01
+    }
+  },
+  "verdict": {
+    "recommendation": "READY",
+    "confidence": 0.7143,
+    "composite_score": 0.855003,
+    "grade": "A",
+    "rationale": "Composite score: 85.5% (Grade A). 5/7 checks passed. Integration is ready to go live.",
+    "checks_passed": 5,
+    "checks_total": 7,
+    "hard_gate_failures": [],
+    "estimated_time_to_ready": "< 1 hour",
+    "verdict_thresholds": {
+      "READY": 0.75,
+      "PARTIAL": 0.45,
+      "NOT_READY": 0.0
+    }
+  },
+  "remediation": {
+    "items": [
+      {
+        "check_id": "freshness",
+        "severity": "MEDIUM",
+        "action": "Ensure signals are generated within 15 minutes of current time.",
+        "command": "curl -s http://producer:8080/signals | python3 -c \"import sys,json,datetime; d=json.load(sys.stdin); print(d.get('timestamp'))\"",
+        "expected_outcome": "freshness check status changes from WARN to PASS.",
+        "documentation_url": "https://github.com/sendoeth/pf-health-monitor"
+      },
+      {
+        "check_id": "cadence",
+        "severity": "MEDIUM",
+        "action": "Check producer health \u2014 ensure uptime >= 90% and active delivery streak.",
+        "command": "python3 check_health.py --signal-log path/to/signal_log.json --summary",
+        "expected_outcome": "cadence check status changes from WARN to PASS.",
+        "documentation_url": "https://github.com/sendoeth/pf-health-monitor"
+      }
+    ],
+    "priority_order": [
+      "freshness",
+      "cadence"
+    ]
+  },
+  "source_artifacts": {
+    "artifacts": [
+      {
+        "artifact_type": "signal_sample",
+        "file_path": "/home/postfiat/pf-signal-schema/example_signals/execute_btc_bullish.json",
+        "public_url": "https://github.com/sendoeth/pf-signal-schema",
+        "content_hash": "7b4b4c19e852283cf7dc8c2cce4266e17c90384014312319779600edad150fc4",
+        "generated_at": null
+      },
+      {
+        "artifact_type": "health_report",
+        "file_path": "/home/postfiat/pf-health-monitor/examples/health_report.json",
+        "public_url": "https://github.com/sendoeth/pf-health-monitor",
+        "content_hash": "e4dd89848a92cbc0add173741eb60ec4b06723a47168ce9b9fd1337bac52d124",
+        "generated_at": "2026-04-10T12:05:24.586Z"
+      },
+      {
+        "artifact_type": "trust_evaluation",
+        "file_path": "/home/postfiat/pf-trust-gateway/examples/trust_evaluation.json",
+        "public_url": "https://github.com/sendoeth/pf-trust-gateway",
+        "content_hash": "8ef55608c0a072efe8de05a0776cb10a53bc0d62bf187cf19d68dee991347910",
+        "generated_at": "2026-04-10T12:55:49.518Z"
+      },
+      {
+        "artifact_type": "proof_surface",
+        "file_path": "/home/postfiat/proof_surface.json",
+        "public_url": "https://github.com/sendoeth/post-fiat-signals",
+        "content_hash": "4b1f45066c2fe77e09c29f0d56e30fbbce384dfbf70d4067fe2b2e3207d2668e",
+        "generated_at": "2026-03-26T10:47:47.999895+00:00"
+      }
+    ]
+  },
+  "hash_chain": {
+    "algorithm": "SHA-256",
+    "test_hash": "5d79317ac9208959ac152b1fcde4c5081360fae0786fcc5c5889098ab1ee29f9",
+    "previous_test_hash": null,
+    "chain_length": 1,
+    "artifact_hashes": {
+      "signal_sample": "7b4b4c19e852283cf7dc8c2cce4266e17c90384014312319779600edad150fc4",
+      "health_report": "e4dd89848a92cbc0add173741eb60ec4b06723a47168ce9b9fd1337bac52d124",
+      "trust_evaluation": "8ef55608c0a072efe8de05a0776cb10a53bc0d62bf187cf19d68dee991347910",
+      "proof_surface": "4b1f45066c2fe77e09c29f0d56e30fbbce384dfbf70d4067fe2b2e3207d2668e"
+    }
+  },
+  "limitations": {
+    "items": [
+      {
+        "id": "REFERENCE_MODE_ONLY",
+        "description": "This test uses reference data, not a live endpoint probe. Actual connectivity and latency are not measured.",
+        "bias_direction": "OVERSTATED_READINESS",
+        "bias_magnitude": "Real endpoint may have connectivity issues, latency, or rate limits not captured here."
+      },
+      {
+        "id": "POINT_IN_TIME_SNAPSHOT",
+        "description": "All checks reflect a single point in time. Producer health and signal quality may change.",
+        "bias_direction": "INDETERMINATE",
+        "bias_magnitude": "Future signals may differ in quality, freshness, and cadence."
+      },
+      {
+        "id": "RESOLUTION_DRY_RUN_SIMULATED",
+        "description": "Resolution dry-run validates fields and proof surface compatibility, not actual market data resolution.",
+        "bias_direction": "OVERSTATED_READINESS",
+        "bias_magnitude": "Real resolution requires market data retrieval and price comparison."
+      },
+      {
+        "id": "STALE_REFERENCE_SIGNALS",
+        "description": "Reference signals are 292h old. Freshness check reflects reference data age, not live production.",
+        "bias_direction": "UNDERSTATED_READINESS",
+        "bias_magnitude": "Live signals would likely be fresher than reference data."
+      },
+      {
+        "id": "SINGLE_PRODUCER_SCOPE",
+        "description": "This test validates integration with one producer. Multi-producer setups need separate tests.",
+        "bias_direction": "INDETERMINATE",
+        "bias_magnitude": "Cross-producer compatibility is not assessed."
+      }
+    ]
+  }
+}

@@ -1,0 +1,333 @@
+{
+  "schema_version": "1.0.0",
+  "meta": {
+    "report_id": "CCR-A1A03449975D",
+    "generated_at": "2026-04-23T11:23:33Z",
+    "generator_version": "1.0.0",
+    "content_hash": "7eb167046659bad6091e25c978045c430d4188f3c4d5c8751763dc7d475a603a",
+    "source_artifact": "resolved_signals.json",
+    "total_signals": 8676
+  },
+  "calibration_curve": {
+    "bins": [
+      {
+        "bin_id": 0,
+        "lower": 0.0,
+        "upper": 0.1,
+        "signal_count": 7,
+        "mean_confidence": 0.097,
+        "observed_frequency": 0.0,
+        "wilson_ci": {
+          "lower": 0.0,
+          "upper": 0.354339,
+          "confidence_level": 0.95
+        },
+        "confidence_label": "INSUFFICIENT_DATA"
+      },
+      {
+        "bin_id": 1,
+        "lower": 0.1,
+        "upper": 0.2,
+        "signal_count": 21,
+        "mean_confidence": 0.127333,
+        "observed_frequency": 0.095238,
+        "wilson_ci": {
+          "lower": 0.026518,
+          "upper": 0.289146,
+          "confidence_level": 0.95
+        },
+        "confidence_label": "WELL_CALIBRATED"
+      },
+      {
+        "bin_id": 2,
+        "lower": 0.2,
+        "upper": 0.3,
+        "signal_count": 0,
+        "mean_confidence": null,
+        "observed_frequency": null,
+        "wilson_ci": {
+          "lower": null,
+          "upper": null,
+          "confidence_level": 0.95
+        },
+        "confidence_label": "INSUFFICIENT_DATA"
+      },
+      {
+        "bin_id": 3,
+        "lower": 0.3,
+        "upper": 0.4,
+        "signal_count": 0,
+        "mean_confidence": null,
+        "observed_frequency": null,
+        "wilson_ci": {
+          "lower": null,
+          "upper": null,
+          "confidence_level": 0.95
+        },
+        "confidence_label": "INSUFFICIENT_DATA"
+      },
+      {
+        "bin_id": 4,
+        "lower": 0.4,
+        "upper": 0.5,
+        "signal_count": 0,
+        "mean_confidence": null,
+        "observed_frequency": null,
+        "wilson_ci": {
+          "lower": null,
+          "upper": null,
+          "confidence_level": 0.95
+        },
+        "confidence_label": "INSUFFICIENT_DATA"
+      },
+      {
+        "bin_id": 5,
+        "lower": 0.5,
+        "upper": 0.6,
+        "signal_count": 8648,
+        "mean_confidence": 0.530343,
+        "observed_frequency": 0.522317,
+        "wilson_ci": {
+          "lower": 0.511782,
+          "upper": 0.532833,
+          "confidence_level": 0.95
+        },
+        "confidence_label": "WELL_CALIBRATED"
+      },
+      {
+        "bin_id": 6,
+        "lower": 0.6,
+        "upper": 0.7,
+        "signal_count": 0,
+        "mean_confidence": null,
+        "observed_frequency": null,
+        "wilson_ci": {
+          "lower": null,
+          "upper": null,
+          "confidence_level": 0.95
+        },
+        "confidence_label": "INSUFFICIENT_DATA"
+      },
+      {
+        "bin_id": 7,
+        "lower": 0.7,
+        "upper": 0.8,
+        "signal_count": 0,
+        "mean_confidence": null,
+        "observed_frequency": null,
+        "wilson_ci": {
+          "lower": null,
+          "upper": null,
+          "confidence_level": 0.95
+        },
+        "confidence_label": "INSUFFICIENT_DATA"
+      },
+      {
+        "bin_id": 8,
+        "lower": 0.8,
+        "upper": 0.9,
+        "signal_count": 0,
+        "mean_confidence": null,
+        "observed_frequency": null,
+        "wilson_ci": {
+          "lower": null,
+          "upper": null,
+          "confidence_level": 0.95
+        },
+        "confidence_label": "INSUFFICIENT_DATA"
+      },
+      {
+        "bin_id": 9,
+        "lower": 0.9,
+        "upper": 1.0,
+        "signal_count": 0,
+        "mean_confidence": null,
+        "observed_frequency": null,
+        "wilson_ci": {
+          "lower": null,
+          "upper": null,
+          "confidence_level": 0.95
+        },
+        "confidence_label": "INSUFFICIENT_DATA"
+      }
+    ],
+    "total_signals": 8676,
+    "populated_bins": 3,
+    "empty_bins": 7
+  },
+  "ece": {
+    "value": 0.008156,
+    "interpretation": "Expected Calibration Error is 0.0082 (excellent). On average, predicted confidence deviates from observed frequency by 0.8 percentage points."
+  },
+  "mce": {
+    "value": 0.097,
+    "interpretation": "Maximum per-bin calibration error is 0.0970. Worst-case bin deviates by 9.7 percentage points from perfect calibration."
+  },
+  "brier_decomposition": {
+    "brier_score": 0.24898,
+    "reliability": 7.4e-05,
+    "resolution": 0.000659,
+    "uncertainty": 0.249565,
+    "reliability_pct": 0.029839,
+    "resolution_pct": 0.264874
+  },
+  "per_symbol": {
+    "BTC": {
+      "signal_count": 2168,
+      "accuracy": 0.558579,
+      "mean_confidence": 0.574254,
+      "ece": 0.015675,
+      "observed_frequency": 0.558579,
+      "confidence_gap": 0.015675,
+      "label": "WELL_CALIBRATED"
+    },
+    "ETH": {
+      "signal_count": 2168,
+      "accuracy": 0.541052,
+      "mean_confidence": 0.513905,
+      "ece": 0.027147,
+      "observed_frequency": 0.541052,
+      "confidence_gap": -0.027147,
+      "label": "WELL_CALIBRATED"
+    },
+    "LINK": {
+      "signal_count": 2172,
+      "accuracy": 0.512431,
+      "mean_confidence": 0.513962,
+      "ece": 0.001607,
+      "observed_frequency": 0.512431,
+      "confidence_gap": 0.001531,
+      "label": "WELL_CALIBRATED"
+    },
+    "SOL": {
+      "signal_count": 2168,
+      "accuracy": 0.471402,
+      "mean_confidence": 0.513979,
+      "ece": 0.042577,
+      "observed_frequency": 0.471402,
+      "confidence_gap": 0.042577,
+      "label": "WELL_CALIBRATED"
+    }
+  },
+  "regime_conditional": {
+    "SYSTEMIC": {
+      "signal_count": 8676,
+      "accuracy": 0.520862,
+      "mean_confidence": 0.529018,
+      "ece": 0.008156,
+      "observed_frequency": 0.520862,
+      "confidence_gap": 0.008156,
+      "label": "WELL_CALIBRATED"
+    }
+  },
+  "recalibration": {
+    "selected_method": "NONE",
+    "platt_scaling": {
+      "a": 0.915666,
+      "b": -0.162771,
+      "ece_after": 0.058843,
+      "improvement_pct": -621.4641
+    },
+    "isotonic": {
+      "breakpoints": [
+        {
+          "input": 0.097,
+          "output": 0.0
+        },
+        {
+          "input": 0.114,
+          "output": 0.0
+        },
+        {
+          "input": 0.3146,
+          "output": 0.083333
+        },
+        {
+          "input": 0.5152,
+          "output": 0.414956
+        },
+        {
+          "input": 0.5152,
+          "output": 0.5
+        },
+        {
+          "input": 0.5152,
+          "output": 0.504208
+        },
+        {
+          "input": 0.5455,
+          "output": 0.505998
+        },
+        {
+          "input": 0.5758,
+          "output": 0.604478
+        },
+        {
+          "input": 0.5758,
+          "output": 0.632258
+        },
+        {
+          "input": 0.5758,
+          "output": 0.783217
+        }
+      ],
+      "ece_after": 0.126509,
+      "improvement_pct": -1451.112861
+    },
+    "recommendation": "Neither Platt scaling nor isotonic regression achieves >= 5% improvement. Use raw confidence values as-is, noting that confidence differentiation is limited."
+  },
+  "verdict": {
+    "trustworthy": true,
+    "confidence_quality": "EXCELLENT",
+    "overall_label": "UNDIFFERENTIATED",
+    "rationale": "Analyzed 8676 resolved signals with ECE=0.0082 (excellent calibration quality). Overall accuracy is 52.1% vs mean confidence 0.5290 (gap: +0.0082). Confidence values are highly clustered (std=0.0351, 2 of 10 bins populated with >= 10 signals). The calibration curve cannot meaningfully discriminate signal quality across the confidence range.",
+    "consumer_guidance": "Confidence values provide negligible differentiation: 99.7% of signals fall in a narrow 0.50-0.58 band. Do NOT use confidence to filter or rank signals - it carries almost no discriminative information. Instead, filter by symbol-level accuracy and regime context. Monitor for future confidence spread improvements before relying on per-signal confidence."
+  },
+  "hash_chain": {
+    "algorithm": "SHA-256",
+    "report_hash": "7eb167046659bad6091e25c978045c430d4188f3c4d5c8751763dc7d475a603a",
+    "previous_report_hash": null,
+    "chain_length": 1,
+    "artifact_hashes": {
+      "resolved_signals.json": "7804b6a6cff5cae0d7c4372f0a3f1ae2c20299eb20567e779ae1a825c92b00a9"
+    }
+  },
+  "limitations": [
+    {
+      "id": "L01",
+      "description": "Confidence clustering: 99.7% of signals have confidence in the 0.50-0.58 range. This means 8 of 10 calibration bins are empty, and the calibration curve provides minimal diagnostic value across the full confidence spectrum.",
+      "bias_direction": "INDETERMINATE",
+      "bias_magnitude": "HIGH"
+    },
+    {
+      "id": "L02",
+      "description": "Single regime: all 8,676 signals were generated during SYSTEMIC regime. Regime-conditional analysis is degenerate (identical to overall). Calibration behavior under other regimes (NEUTRAL, CRYPTO_LEADS, SEMI_LEADS) is unknown.",
+      "bias_direction": "UNDERSTATED_MISCALIBRATION",
+      "bias_magnitude": "MODERATE"
+    },
+    {
+      "id": "L03",
+      "description": "Short history: signal data spans approximately 25 days (2026-03-19 to 2026-04-13). Seasonal patterns, market regime transitions, and long-term calibration drift are not observable in this sample.",
+      "bias_direction": "INDETERMINATE",
+      "bias_magnitude": "MODERATE"
+    },
+    {
+      "id": "L04",
+      "description": "Recalibration overfitting: Platt scaling and isotonic regression are fit on the same data used for evaluation. Reported improvement percentages are in-sample and will overstate out-of-sample improvement.",
+      "bias_direction": "OVERSTATED_MISCALIBRATION",
+      "bias_magnitude": "LOW"
+    },
+    {
+      "id": "L05",
+      "description": "Binary resolution: direction_correct is binary (true/false), ignoring move magnitude. A signal correct by 0.01% and one correct by 5% are treated identically. This compresses the information available for calibration assessment.",
+      "bias_direction": "UNDERSTATED_MISCALIBRATION",
+      "bias_magnitude": "LOW"
+    },
+    {
+      "id": "L06",
+      "description": "Equal-width bins: the standard 10-bin partition clusters nearly all signals into 1-2 bins, masking within-cluster variation. Adaptive or quantile-based binning would reveal finer-grained calibration structure within the 0.50-0.58 range but is not implemented.",
+      "bias_direction": "UNDERSTATED_MISCALIBRATION",
+      "bias_magnitude": "MODERATE"
+    }
+  ]
+}

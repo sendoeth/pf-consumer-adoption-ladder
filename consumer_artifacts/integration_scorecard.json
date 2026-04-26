@@ -1,0 +1,354 @@
+{
+  "schema_version": "1.0.0",
+  "scorecard_meta": {
+    "generated_at": "2026-04-21T11:43:33Z",
+    "generator_version": "1.0.0",
+    "rerun_command": "python3 score_integration.py --backtest /home/postfiat/pf-consumer-backtest/examples/backtest_report.json --tuner /home/postfiat/pf-consumer-tuner/examples/tuning_report.json --forensics /home/postfiat/pf-signal-forensics/examples/forensic_report.json --health /home/postfiat/pf-health-monitor/examples/health_report.json --acceptance /home/postfiat/pf-acceptance-test/examples/acceptance_report.json -o integration_scorecard.json"
+  },
+  "artifact_sources": {
+    "backtest": {
+      "source_url": "https://github.com/sendoeth/pf-consumer-backtest/blob/main/examples/backtest_report.json",
+      "local_path": "/home/postfiat/pf-consumer-backtest/examples/backtest_report.json",
+      "generated_at": "2026-04-12T13:10:02.835Z",
+      "report_id": "409ea47ad280427fbca3cf54dc45cbe5"
+    },
+    "tuner": {
+      "source_url": "https://github.com/sendoeth/pf-consumer-tuner/blob/main/examples/tuning_report.json",
+      "local_path": "/home/postfiat/pf-consumer-tuner/examples/tuning_report.json",
+      "generated_at": "2026-04-15T08:29:29.000Z",
+      "report_id": "CT-20260415T082929Z"
+    },
+    "forensics": {
+      "source_url": "https://github.com/sendoeth/pf-signal-forensics/blob/main/examples/forensic_report.json",
+      "local_path": "/home/postfiat/pf-signal-forensics/examples/forensic_report.json",
+      "generated_at": "2026-04-15T09:49:40Z",
+      "report_id": null
+    },
+    "health_monitor": {
+      "source_url": "https://github.com/sendoeth/pf-health-monitor/blob/main/examples/health_report.json",
+      "local_path": "/home/postfiat/pf-health-monitor/examples/health_report.json",
+      "generated_at": "2026-04-10T12:05:24.586Z",
+      "report_id": "HM-20260410T120524Z"
+    },
+    "acceptance_test": {
+      "source_url": "https://github.com/sendoeth/pf-acceptance-test/blob/main/examples/acceptance_report.json",
+      "local_path": "/home/postfiat/pf-acceptance-test/examples/acceptance_report.json",
+      "generated_at": "2026-04-10T14:13:18.666Z",
+      "report_id": null
+    }
+  },
+  "subsystem_grades": {
+    "backtest": {
+      "score": 0.60431,
+      "grade": "C",
+      "tool_verdict": "ADOPT",
+      "tool_confidence": 0.5604,
+      "key_metrics": {
+        "accuracy": 0.520862,
+        "brier_score": 0.248519,
+        "karma": 0.001481,
+        "total_signals": 8676,
+        "best_strategy_accuracy": 0.560389,
+        "best_strategy_karma": 0.003409,
+        "strategies_tested": 7
+      },
+      "assessment": "Signal quality is moderate (52.1% accuracy on 8676 signals). Karma is positive (0.001481). Best strategy improves to 56.0% accuracy.",
+      "flags": [
+        "ANTI_SIGNAL_SOL: SOL accuracy below 48%"
+      ]
+    },
+    "tuner": {
+      "score": 0.9,
+      "grade": "A",
+      "tool_verdict": "TUNE",
+      "tool_confidence": 0.9,
+      "key_metrics": {
+        "current_karma": 0.001481,
+        "projected_karma": 0.003552,
+        "improvement_pct": 139.83,
+        "sol_action": "INVERT"
+      },
+      "assessment": "Tuner projects 139.8% karma improvement (0.001481 to 0.003552). SOL identified as anti-signal \u2014 INVERT recommended.",
+      "flags": [
+        "INVERT_SOL: symbol should be inverted (p=0.0077)",
+        "HIGH_IMPROVEMENT: 140% projected karma improvement suggests undertunded baseline"
+      ]
+    },
+    "forensics": {
+      "score": 1.0,
+      "grade": "A",
+      "tool_verdict": "TRACED",
+      "tool_confidence": null,
+      "key_metrics": {
+        "signals_traced": 100,
+        "fate_change_rate": 0.51,
+        "overall_pass_rate": 0.49,
+        "chi_squared": 39.123,
+        "chi_p_value": 1e-06,
+        "cramers_v": 0.571,
+        "sol_policy": "INVERT"
+      },
+      "assessment": "51% of traced signals had their verdict changed by routing gates. Overall pass rate: 49%. Gate failures are NOT independent of symbol (p=1e-06, V=0.571) \u2014 gates differentiate meaningfully.",
+      "flags": []
+    },
+    "health_monitor": {
+      "score": 0.722312,
+      "grade": "B",
+      "tool_verdict": "B",
+      "tool_confidence": null,
+      "key_metrics": {
+        "composite_score": 0.722312,
+        "dimension_scores": {
+          "signal_liveness": {
+            "score": 0.900882,
+            "grade": "A"
+          },
+          "artifact_freshness": {
+            "score": 0.558419,
+            "grade": "C"
+          },
+          "schema_conformance": {
+            "score": 1.0,
+            "grade": "A"
+          },
+          "proof_quality": {
+            "score": 0.308327,
+            "grade": "D"
+          },
+          "error_budget": {
+            "score": 1.0,
+            "grade": "A"
+          },
+          "consumption_evidence": {
+            "score": 0.677758,
+            "grade": "B"
+          }
+        },
+        "proof_accuracy": 0.514568,
+        "proof_freshness": "EXPIRED",
+        "hard_gates_passed": true
+      },
+      "assessment": "Health composite: 72.2% (Grade B). Proof surface is EXPIRED \u2014 accuracy metrics may be stale.",
+      "flags": [
+        "PROOF_EXPIRED: proof surface is expired (361h old)",
+        "WEAK_PROOF_QUALITY: score 0.308 (grade D)"
+      ]
+    },
+    "acceptance_test": {
+      "score": 0.855003,
+      "grade": "A",
+      "tool_verdict": "READY",
+      "tool_confidence": 0.7143,
+      "key_metrics": {
+        "composite_score": 0.855003,
+        "checks_passed": 5,
+        "checks_total": 7,
+        "check_scores": {
+          "connectivity": {
+            "score": 1.0
+          },
+          "schema_compliance": {
+            "score": 1.0
+          },
+          "freshness": {
+            "score": 0.6667
+          },
+          "cadence": {
+            "score": 0.75
+          },
+          "resolution_dry_run": {
+            "score": 1.0
+          },
+          "trust_precheck": {
+            "score": 1.0
+          },
+          "monitoring_wiring": {
+            "score": 1.0
+          }
+        },
+        "freshness_score": 0.6667
+      },
+      "assessment": "Acceptance verdict: READY (5/7 checks passed, 85.5% composite). Integration is ready for production.",
+      "flags": [
+        "WEAK_FRESHNESS: score 0.6667"
+      ]
+    }
+  },
+  "consistency_checks": [
+    {
+      "check_id": "ACCURACY_CONSISTENCY",
+      "description": "Accuracy values should agree across backtest, tuner, and health monitor",
+      "tools_compared": [
+        "backtest",
+        "tuner",
+        "health_monitor"
+      ],
+      "values": {
+        "backtest": 0.520862,
+        "tuner": 0.520862,
+        "health_monitor": 0.514568
+      },
+      "outcome": "CONSISTENT",
+      "tolerance": 0.02,
+      "max_delta": 0.006294,
+      "explanation": "Accuracy values agree within 2.0% tolerance (max delta: 0.0063)",
+      "investigation_path": null
+    },
+    {
+      "check_id": "BRIER_CONSISTENCY",
+      "description": "Brier scores should agree across backtest, tuner, and health monitor",
+      "tools_compared": [
+        "backtest",
+        "tuner",
+        "health_monitor"
+      ],
+      "values": {
+        "backtest": 0.248519,
+        "tuner": 0.248519,
+        "health_monitor": 0.248102
+      },
+      "outcome": "CONSISTENT",
+      "tolerance": 0.005,
+      "max_delta": 0.000417,
+      "explanation": "Brier scores agree within 0.005 tolerance (max delta: 0.000417)",
+      "investigation_path": null
+    },
+    {
+      "check_id": "KARMA_CONSISTENCY",
+      "description": "Karma should match exactly between backtest and tuner (same source data)",
+      "tools_compared": [
+        "backtest",
+        "tuner"
+      ],
+      "values": {
+        "backtest": 0.001481,
+        "tuner": 0.001481
+      },
+      "outcome": "CONSISTENT",
+      "tolerance": 1e-06,
+      "max_delta": 0.0,
+      "explanation": "Karma matches exactly between backtest (0.001481) and tuner (0.001481)",
+      "investigation_path": null
+    },
+    {
+      "check_id": "VERDICT_ALIGNMENT",
+      "description": "All tool verdicts should agree on proceed vs dont-proceed",
+      "tools_compared": [
+        "backtest",
+        "tuner",
+        "health_monitor",
+        "acceptance_test"
+      ],
+      "values": {
+        "backtest": "ADOPT",
+        "tuner": "TUNE",
+        "health_monitor": "B",
+        "acceptance_test": "READY"
+      },
+      "outcome": "CONSISTENT",
+      "tolerance": null,
+      "max_delta": null,
+      "explanation": "All 4 tools signal proceed: backtest=ADOPT, tuner=TUNE, health_monitor=B, acceptance_test=READY",
+      "investigation_path": null
+    },
+    {
+      "check_id": "SOL_POLICY_ALIGNMENT",
+      "description": "Tuner SOL action should align with forensics weak_symbol_gate configuration",
+      "tools_compared": [
+        "tuner",
+        "forensics"
+      ],
+      "values": {
+        "tuner_sol_action": "INVERT",
+        "forensics_sol_policy": "INVERT"
+      },
+      "outcome": "CONSISTENT",
+      "tolerance": null,
+      "max_delta": null,
+      "explanation": "Both agree: SOL=INVERT. Tuner recommendation matches forensics routing policy.",
+      "investigation_path": null
+    },
+    {
+      "check_id": "PROOF_FRESHNESS_ALIGNMENT",
+      "description": "Health artifact freshness and acceptance freshness should agree on staleness",
+      "tools_compared": [
+        "health_monitor",
+        "acceptance_test"
+      ],
+      "values": {
+        "health_artifact_freshness": 0.558419,
+        "acceptance_freshness": 0.6667
+      },
+      "outcome": "CONSISTENT",
+      "tolerance": 0.25,
+      "max_delta": 0.108281,
+      "explanation": "Both tools agree on freshness: health=0.5584, acceptance=0.6667 (delta 0.1083 within 25% tolerance)",
+      "investigation_path": null
+    },
+    {
+      "check_id": "TUNER_IMPROVEMENT_VALIDATION",
+      "description": "Tuner projected karma should be in range of backtest best-strategy karma",
+      "tools_compared": [
+        "backtest",
+        "tuner"
+      ],
+      "values": {
+        "backtest_best_karma": 0.003409,
+        "tuner_projected_karma": 0.003552
+      },
+      "outcome": "CONSISTENT",
+      "tolerance": null,
+      "max_delta": 0.000143,
+      "explanation": "Tuner projection (0.003552) is within 80-150% of backtest best (0.003409), ratio=1.04. Tools agree on improvement magnitude.",
+      "investigation_path": null
+    },
+    {
+      "check_id": "HEALTH_ACCEPTANCE_GRADE_GAP",
+      "description": "Health and acceptance grades should not diverge by more than 1 level",
+      "tools_compared": [
+        "health_monitor",
+        "acceptance_test"
+      ],
+      "values": {
+        "health_grade": "B",
+        "acceptance_grade": "A"
+      },
+      "outcome": "CONSISTENT",
+      "tolerance": null,
+      "max_delta": 1,
+      "explanation": "Health (B) and acceptance (A) grades are within 1 level. Both tools agree on integration posture.",
+      "investigation_path": null
+    }
+  ],
+  "overall_verdict": {
+    "readiness": "READY",
+    "composite_score": 0.787656,
+    "grade": "B",
+    "subsystem_summary": {
+      "A": 3,
+      "B": 1,
+      "C": 1,
+      "D": 0,
+      "F": 0
+    },
+    "consistency_summary": {
+      "total_checks": 8,
+      "consistent": 8,
+      "conflicts": 0,
+      "partial": 0,
+      "skipped": 0
+    },
+    "worst_subsystem": "backtest",
+    "caveats": [],
+    "recommendation": "All subsystems C or above with no conflicts. Integration is healthy and ready for production consumption."
+  },
+  "limitations": [
+    "Artifact dates span 2026-04-10 to 2026-04-15 \u2014 scorecard reflects a snapshot, not a live assessment. Re-run with fresh artifacts for current state.",
+    "Backtest uses 8676 resolved signals; health uses proof_surface (fewer signals). Metric divergence between tools is expected.",
+    "Proof surface is marked EXPIRED (361 hours old). Accuracy and Brier values from health monitor may not reflect current producer performance.",
+    "Forensics traced 100 signals (stratified sample). Gate failure rates have wider confidence intervals than full-population analysis.",
+    "Subsystem scores are computed from tool outputs, not independently verified against raw signal data. Use verify_scorecard.py for independent recomputation of all derived values.",
+    "Grade thresholds (A>=0.85, B>=0.70, C>=0.55, D>=0.40, F<0.40) are calibrated for the current producer but not validated across multiple producer ecosystems."
+  ],
+  "content_hash": "sha256:99908c1444372df6550f8bbf9b3a12632711175a45961c12a374e811929dddfd"
+}

@@ -1,0 +1,52 @@
+[
+  {
+    "signal_id": "acd7bfcf-f442-4571-8e00-ef43b31a2482",
+    "symbol": "BTC",
+    "direction": "bearish",
+    "confidence": 0.097,
+    "horizon_hours": 24,
+    "timestamp": "2026-03-19T23:31:53.295658+00:00",
+    "method": "unknown",
+    "regime": "SYSTEMIC"
+  },
+  {
+    "signal_id": "2e9cd6e8-dfa7-410f-93f9-c81b394d3712",
+    "symbol": "ETH",
+    "direction": "bearish",
+    "confidence": 0.114,
+    "horizon_hours": 24,
+    "timestamp": "2026-03-19T23:31:53.295658+00:00",
+    "method": "unknown",
+    "regime": "SYSTEMIC"
+  },
+  {
+    "signal_id": "6ff76406-4f06-4ea5-942a-f920181ed040",
+    "symbol": "SOL",
+    "direction": "bearish",
+    "confidence": 0.137,
+    "horizon_hours": 24,
+    "timestamp": "2026-03-19T23:31:53.295658+00:00",
+    "method": "unknown",
+    "regime": "SYSTEMIC"
+  },
+  {
+    "signal_id": "07304ba3-d58b-4fd3-8f7c-d92a7a4cfeab",
+    "symbol": "LINK",
+    "direction": "bearish",
+    "confidence": 0.131,
+    "horizon_hours": 24,
+    "timestamp": "2026-03-19T23:31:53.295658+00:00",
+    "method": "unknown",
+    "regime": "SYSTEMIC"
+  },
+  {
+    "signal_id": "fe15a1f2-dccf-412b-a9dd-e886221d089c",
+    "symbol": "BTC",
+    "direction": "bearish",
+    "confidence": 0.097,
+    "horizon_hours": 24,
+    "timestamp": "2026-03-19T23:32:08.063315+00:00",
+    "method": "unknown",
+    "regime": "SYSTEMIC"
+  }
+]

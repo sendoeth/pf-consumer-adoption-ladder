@@ -1,0 +1,449 @@
+{
+  "monitor_version": "1.0.0",
+  "meta": {
+    "report_id": "HM-20260410T120524Z",
+    "generated_at": "2026-04-10T12:05:24.586Z",
+    "generator_version": "1.0.0",
+    "content_hash": "fbbbfa73ca3b125ef7323405300e6002523442c3aef60f92ebda5da6c1018fd7",
+    "previous_report_hash": null
+  },
+  "producer": {
+    "producer_id": "post-fiat-signals",
+    "wallet": "rfLJ4ZRnqmGFLAcMvCD56nKGbjpdTJmMqo",
+    "protocols_published": [
+      "pf-signal-schema",
+      "pf-resolution-protocol",
+      "pf-routing-protocol",
+      "pf-aggregation-protocol",
+      "pf-proof-protocol",
+      "pf-lifecycle-pipeline",
+      "pf-consumer-audit",
+      "pf-discovery-protocol",
+      "pf-consumer-quickstart",
+      "pf-conformance-testkit",
+      "pf-price-feed-interop"
+    ]
+  },
+  "dimensions": {
+    "signal_liveness": {
+      "score": 0.900882,
+      "grade": "A",
+      "weight": 0.25,
+      "details": {
+        "last_signal_at": "2026-04-10T11:03:01+00:00",
+        "hours_since_last": 1.04,
+        "current_streak_days": 23,
+        "max_streak_days": 23,
+        "active_days": 23,
+        "calendar_span_days": 23,
+        "uptime_ratio": 1.0,
+        "runs_per_day": 90.09,
+        "status": "RECENT"
+      },
+      "source_artifact": "activity_feed"
+    },
+    "artifact_freshness": {
+      "score": 0.558419,
+      "grade": "C",
+      "weight": 0.15,
+      "details": {
+        "artifacts_checked": [
+          {
+            "artifact_type": "activity_feed",
+            "generated_at": "2026-04-10T11:09:18.417Z",
+            "age_hours": 0.94,
+            "freshness_grade": "LIVE",
+            "source_path": null
+          },
+          {
+            "artifact_type": "proof_surface",
+            "generated_at": "2026-03-26T10:47:47.999895+00:00",
+            "age_hours": 361.29,
+            "freshness_grade": "EXPIRED",
+            "source_path": null
+          },
+          {
+            "artifact_type": "proof_receipt",
+            "generated_at": null,
+            "age_hours": null,
+            "freshness_grade": "EXPIRED",
+            "source_path": null
+          },
+          {
+            "artifact_type": "attestation",
+            "generated_at": "2026-04-06T05:00:00+00:00",
+            "age_hours": 103.09,
+            "freshness_grade": "STALE",
+            "source_path": null
+          }
+        ],
+        "worst_artifact": "proof_receipt",
+        "mean_age_hours": 155.11
+      },
+      "source_artifact": "activity_feed+proof_surface+proof_receipt+attestation"
+    },
+    "schema_conformance": {
+      "score": 1.0,
+      "grade": "A",
+      "weight": 0.15,
+      "details": {
+        "artifacts_validated": [
+          {
+            "artifact_type": "activity_feed",
+            "schema_version": "1.0.0",
+            "schema_valid": true,
+            "errors": [],
+            "source_path": null
+          },
+          {
+            "artifact_type": "proof_receipt",
+            "schema_version": "1.0.0",
+            "schema_valid": true,
+            "errors": [],
+            "source_path": null
+          },
+          {
+            "artifact_type": "proof_surface",
+            "schema_version": "1.0.0",
+            "schema_valid": true,
+            "errors": [],
+            "source_path": null
+          }
+        ],
+        "total_checked": 3,
+        "total_valid": 3,
+        "conformance_rate": 1.0
+      },
+      "source_artifact": "activity_feed+proof_receipt+proof_surface"
+    },
+    "proof_quality": {
+      "score": 0.308327,
+      "grade": "D",
+      "weight": 0.2,
+      "details": {
+        "proof_surface_age_hours": 361.29,
+        "proof_surface_freshness": "EXPIRED",
+        "total_resolved": 2128,
+        "accuracy": 0.514568,
+        "brier_score": 0.248102,
+        "reputation_score": 0.5556,
+        "reputation_grade": "C",
+        "drift_status": "UNKNOWN",
+        "symbols_covered": [
+          "BTC",
+          "ETH",
+          "LINK",
+          "SOL"
+        ]
+      },
+      "source_artifact": "proof_surface+proof_receipt"
+    },
+    "error_budget": {
+      "score": 1.0,
+      "grade": "A",
+      "weight": 0.1,
+      "details": {
+        "total_signals": 8295,
+        "total_errors": 0,
+        "error_rate": 0.0,
+        "http_acceptance_rate": 1.0,
+        "error_budget_remaining": 1.0,
+        "budget_threshold": 0.05,
+        "trend": "STABLE"
+      },
+      "source_artifact": "activity_feed"
+    },
+    "consumption_evidence": {
+      "score": 0.677758,
+      "grade": "B",
+      "weight": 0.15,
+      "details": {
+        "total_consumers": 1,
+        "active_consumers": 1,
+        "total_signals_consumed": 8295,
+        "consumption_span_days": 23,
+        "has_activity_feed": true,
+        "has_attestation": true,
+        "has_verification_bundle": false,
+        "consumer_types": [
+          "autonomous_trading_intelligence"
+        ]
+      },
+      "source_artifact": "activity_feed+attestation"
+    }
+  },
+  "composite": {
+    "score": 0.722312,
+    "grade": "B",
+    "dimension_weights": {
+      "signal_liveness": 0.25,
+      "artifact_freshness": 0.15,
+      "schema_conformance": 0.15,
+      "proof_quality": 0.2,
+      "error_budget": 0.1,
+      "consumption_evidence": 0.15
+    },
+    "dimension_scores": {
+      "signal_liveness": 0.900882,
+      "artifact_freshness": 0.558419,
+      "schema_conformance": 1.0,
+      "proof_quality": 0.308327,
+      "error_budget": 1.0,
+      "consumption_evidence": 0.677758
+    },
+    "weighted_contributions": {
+      "signal_liveness": 0.22522,
+      "artifact_freshness": 0.083763,
+      "schema_conformance": 0.15,
+      "proof_quality": 0.061665,
+      "error_budget": 0.1,
+      "consumption_evidence": 0.101664
+    },
+    "hard_gates": [
+      {
+        "gate_id": "SIGNAL_DEAD",
+        "description": "No signal delivery in 7+ days",
+        "passed": true,
+        "detail": "Last signal 1h ago"
+      },
+      {
+        "gate_id": "PROOF_EXPIRED",
+        "description": "Proof surface older than 30 days",
+        "passed": true,
+        "detail": "Proof surface is 361h old"
+      },
+      {
+        "gate_id": "ERROR_RATE_CRITICAL",
+        "description": "Error rate exceeds 20%",
+        "passed": true,
+        "detail": "Error rate: 0.0%"
+      }
+    ],
+    "gate_override": false
+  },
+  "grade_rubric": {
+    "composite_thresholds": {
+      "A": 0.85,
+      "B": 0.7,
+      "C": 0.5,
+      "D": 0.3,
+      "F": 0.0
+    },
+    "dimension_thresholds": {
+      "signal_liveness": {
+        "A": 0.9,
+        "B": 0.7,
+        "C": 0.4,
+        "D": 0.2,
+        "F": 0.0
+      },
+      "artifact_freshness": {
+        "A": 0.85,
+        "B": 0.65,
+        "C": 0.4,
+        "D": 0.2,
+        "F": 0.0
+      },
+      "schema_conformance": {
+        "A": 0.95,
+        "B": 0.8,
+        "C": 0.6,
+        "D": 0.4,
+        "F": 0.0
+      },
+      "proof_quality": {
+        "A": 0.8,
+        "B": 0.6,
+        "C": 0.4,
+        "D": 0.2,
+        "F": 0.0
+      },
+      "error_budget": {
+        "A": 0.95,
+        "B": 0.8,
+        "C": 0.6,
+        "D": 0.3,
+        "F": 0.0
+      },
+      "consumption_evidence": {
+        "A": 0.8,
+        "B": 0.6,
+        "C": 0.4,
+        "D": 0.2,
+        "F": 0.0
+      }
+    },
+    "hard_gates": [
+      {
+        "gate_id": "SIGNAL_DEAD",
+        "condition": "No signal delivery in 7+ days",
+        "override_grade": "F"
+      },
+      {
+        "gate_id": "PROOF_EXPIRED",
+        "condition": "Proof surface older than 30 days",
+        "override_grade": "F"
+      },
+      {
+        "gate_id": "ERROR_RATE_CRITICAL",
+        "condition": "Error rate exceeds 20%",
+        "override_grade": "F"
+      }
+    ],
+    "freshness_thresholds": {
+      "LIVE": 1,
+      "RECENT": 24,
+      "STALE": 168,
+      "EXPIRED": 720
+    }
+  },
+  "source_traceability": {
+    "sources": [
+      {
+        "source_id": "activity_feed",
+        "artifact_type": "activity_feed",
+        "file_path": "/home/postfiat/pf-consumer-activity-feed/examples/consumer_activity_feed.json",
+        "public_url": "https://github.com/sendoeth/pf-consumer-activity-feed",
+        "content_hash": "c5de3da1a42c8904e227bf1a6b2443fb0434341f1da1cd7214cd8949b863c518",
+        "generated_at": null
+      },
+      {
+        "source_id": "proof_surface",
+        "artifact_type": "proof_surface",
+        "file_path": "/home/postfiat/proof_surface.json",
+        "public_url": "https://github.com/sendoeth/post-fiat-signals",
+        "content_hash": "4b1f45066c2fe77e09c29f0d56e30fbbce384dfbf70d4067fe2b2e3207d2668e",
+        "generated_at": null
+      },
+      {
+        "source_id": "proof_receipt",
+        "artifact_type": "proof_receipt",
+        "file_path": "/home/postfiat/pf-proof-receipt/examples/unified_proof_receipt.json",
+        "public_url": "https://github.com/sendoeth/pf-proof-receipt",
+        "content_hash": "19af741415e8aa944b8ebe49c11b713cfdf9d419c851a8bec020eb05f2b92efd",
+        "generated_at": null
+      },
+      {
+        "source_id": "attestation",
+        "artifact_type": "attestation",
+        "file_path": "/home/postfiat/pf-consumer-verification/attestation/live_consumption_attestation.json",
+        "public_url": "https://github.com/sendoeth/pf-consumer-verification",
+        "content_hash": "ff537093990514acc5dc17f076387d6a71978a356023c568e43c3a079b84231e",
+        "generated_at": null
+      }
+    ],
+    "field_map": {
+      "signal_liveness.last_signal_at": {
+        "source_id": "activity_feed",
+        "json_path": "$.consumers[0].continuity.latest_signal",
+        "description": "Most recent signal delivery timestamp"
+      },
+      "signal_liveness.current_streak_days": {
+        "source_id": "activity_feed",
+        "json_path": "$.consumers[0].continuity.uptime_streak_days",
+        "description": "Current consecutive delivery streak"
+      },
+      "signal_liveness.uptime_ratio": {
+        "source_id": "activity_feed",
+        "json_path": "$.consumers[0].continuity.uptime_ratio",
+        "description": "Fraction of days with deliveries"
+      },
+      "signal_liveness.runs_per_day": {
+        "source_id": "activity_feed",
+        "json_path": "$.consumers[0].delivery.runs_per_day",
+        "description": "Average adapter runs per active day"
+      },
+      "proof_quality.accuracy": {
+        "source_id": "proof_surface",
+        "json_path": "$.overall.brier_decomposition.accuracy.point",
+        "description": "Binary accuracy of resolved signals"
+      },
+      "proof_quality.brier_score": {
+        "source_id": "proof_surface",
+        "json_path": "$.overall.brier_decomposition.brier_score",
+        "description": "Brier score (calibration measure)"
+      },
+      "proof_quality.reputation_score": {
+        "source_id": "proof_surface",
+        "json_path": "$.producer_reputation_score_v2.composite_score",
+        "description": "Composite reputation grade"
+      },
+      "proof_quality.total_resolved": {
+        "source_id": "proof_surface",
+        "json_path": "$.signal_summary.total_resolved",
+        "description": "Total resolved signals in proof surface"
+      },
+      "error_budget.error_rate": {
+        "source_id": "activity_feed",
+        "json_path": "$.consumers[0].delivery.error_rate",
+        "description": "Fraction of failed signal deliveries"
+      },
+      "error_budget.total_signals": {
+        "source_id": "activity_feed",
+        "json_path": "$.consumers[0].delivery.total_signals_delivered",
+        "description": "Total signals delivered"
+      },
+      "consumption_evidence.total_consumers": {
+        "source_id": "activity_feed",
+        "json_path": "$.aggregate.total_consumers",
+        "description": "Number of downstream consumers"
+      },
+      "consumption_evidence.total_signals_consumed": {
+        "source_id": "activity_feed",
+        "json_path": "$.aggregate.total_signals_all_consumers",
+        "description": "Total signals consumed across all consumers"
+      },
+      "consumption_evidence.consumption_span_days": {
+        "source_id": "activity_feed",
+        "json_path": "$.consumers[0].continuity.calendar_span_days",
+        "description": "Days between first and most recent consumption"
+      }
+    }
+  },
+  "hash_chain": {
+    "algorithm": "SHA-256",
+    "report_hash": "fbbbfa73ca3b125ef7323405300e6002523442c3aef60f92ebda5da6c1018fd7",
+    "previous_report_hash": null,
+    "chain_length": 1,
+    "artifact_hashes": {
+      "activity_feed": "c5de3da1a42c8904e227bf1a6b2443fb0434341f1da1cd7214cd8949b863c518",
+      "proof_surface": "4b1f45066c2fe77e09c29f0d56e30fbbce384dfbf70d4067fe2b2e3207d2668e",
+      "proof_receipt": "19af741415e8aa944b8ebe49c11b713cfdf9d419c851a8bec020eb05f2b92efd",
+      "attestation": "ff537093990514acc5dc17f076387d6a71978a356023c568e43c3a079b84231e"
+    }
+  },
+  "limitations": {
+    "items": [
+      {
+        "id": "SINGLE_PRODUCER_SNAPSHOT",
+        "description": "This report covers one producer at one point in time. Health can change between reports.",
+        "bias_direction": "OVERSTATED_HEALTH",
+        "bias_magnitude": "Snapshot may not reflect transient failures."
+      },
+      {
+        "id": "SELF_REPORTED_ARTIFACTS",
+        "description": "Artifact contents are producer-generated. This monitor checks structural validity and cross-consistency but cannot verify signal correctness independently.",
+        "bias_direction": "OVERSTATED_HEALTH",
+        "bias_magnitude": "Producer could ship structurally valid but factually wrong data."
+      },
+      {
+        "id": "SINGLE_CONSUMER",
+        "description": "Only one downstream consumer. Consumption evidence reflects one integration, not ecosystem breadth.",
+        "bias_direction": "OVERSTATED_HEALTH",
+        "bias_magnitude": "Multi-consumer diversity would strengthen this dimension."
+      },
+      {
+        "id": "STALE_PROOF_SURFACE",
+        "description": "Proof surface is 361h (15d) old. Recent accuracy may differ from reported.",
+        "bias_direction": "INDETERMINATE",
+        "bias_magnitude": "Proof surface covers historical window only."
+      },
+      {
+        "id": "MARGINAL_ACCURACY",
+        "description": "Binary accuracy 51.5% is near coin flip (50%). Edge is modest.",
+        "bias_direction": "INDETERMINATE",
+        "bias_magnitude": "Statistically significant but practically marginal."
+      }
+    ]
+  }
+}

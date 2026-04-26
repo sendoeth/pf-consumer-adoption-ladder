@@ -1,0 +1,810 @@
+{
+  "replay_version": "1.0.0",
+  "meta": {
+    "replay_id": "ER-20260410T133714Z",
+    "generated_at": "2026-04-10T13:37:14.291Z",
+    "generator_version": "1.0.0",
+    "content_hash": "933381d4420418f822d86428a3554355759265df1962fcc0a545d08ac93f0342",
+    "previous_replay_hash": null
+  },
+  "producer": {
+    "producer_id": "post-fiat-signals",
+    "wallet": "rfLJ4ZRnqmGFLAcMvCD56nKGbjpdTJmMqo",
+    "public_url": "https://github.com/sendoeth/post-fiat-signals"
+  },
+  "consumer": {
+    "consumer_id": "b1e55ed",
+    "consumer_type": "autonomous_trading_intelligence",
+    "integration_date": "2026-03-19T22:44:28+00:00"
+  },
+  "observation_window": {
+    "start_date": "2026-03-19",
+    "end_date": "2026-04-10",
+    "total_days": 23,
+    "data_source": "REAL_ONLY"
+  },
+  "delivery_timeline": {
+    "daily_entries": [
+      {
+        "date": "2026-03-19",
+        "day_number": 1,
+        "runs": 11,
+        "signals": 51,
+        "errors": 0,
+        "cumulative_signals": 51,
+        "cumulative_errors": 0,
+        "error_rate": 0.0,
+        "status": "OPERATIONAL"
+      },
+      {
+        "date": "2026-03-20",
+        "day_number": 2,
+        "runs": 96,
+        "signals": 384,
+        "errors": 0,
+        "cumulative_signals": 435,
+        "cumulative_errors": 0,
+        "error_rate": 0.0,
+        "status": "OPERATIONAL"
+      },
+      {
+        "date": "2026-03-21",
+        "day_number": 3,
+        "runs": 96,
+        "signals": 384,
+        "errors": 0,
+        "cumulative_signals": 819,
+        "cumulative_errors": 0,
+        "error_rate": 0.0,
+        "status": "OPERATIONAL"
+      },
+      {
+        "date": "2026-03-22",
+        "day_number": 4,
+        "runs": 96,
+        "signals": 384,
+        "errors": 0,
+        "cumulative_signals": 1203,
+        "cumulative_errors": 0,
+        "error_rate": 0.0,
+        "status": "OPERATIONAL"
+      },
+      {
+        "date": "2026-03-23",
+        "day_number": 5,
+        "runs": 96,
+        "signals": 384,
+        "errors": 0,
+        "cumulative_signals": 1587,
+        "cumulative_errors": 0,
+        "error_rate": 0.0,
+        "status": "OPERATIONAL"
+      },
+      {
+        "date": "2026-03-24",
+        "day_number": 6,
+        "runs": 96,
+        "signals": 384,
+        "errors": 0,
+        "cumulative_signals": 1971,
+        "cumulative_errors": 0,
+        "error_rate": 0.0,
+        "status": "OPERATIONAL"
+      },
+      {
+        "date": "2026-03-25",
+        "day_number": 7,
+        "runs": 96,
+        "signals": 384,
+        "errors": 0,
+        "cumulative_signals": 2355,
+        "cumulative_errors": 0,
+        "error_rate": 0.0,
+        "status": "OPERATIONAL"
+      },
+      {
+        "date": "2026-03-26",
+        "day_number": 8,
+        "runs": 96,
+        "signals": 384,
+        "errors": 0,
+        "cumulative_signals": 2739,
+        "cumulative_errors": 0,
+        "error_rate": 0.0,
+        "status": "OPERATIONAL"
+      },
+      {
+        "date": "2026-03-27",
+        "day_number": 9,
+        "runs": 96,
+        "signals": 384,
+        "errors": 0,
+        "cumulative_signals": 3123,
+        "cumulative_errors": 0,
+        "error_rate": 0.0,
+        "status": "OPERATIONAL"
+      },
+      {
+        "date": "2026-03-28",
+        "day_number": 10,
+        "runs": 96,
+        "signals": 384,
+        "errors": 0,
+        "cumulative_signals": 3507,
+        "cumulative_errors": 0,
+        "error_rate": 0.0,
+        "status": "OPERATIONAL"
+      },
+      {
+        "date": "2026-03-29",
+        "day_number": 11,
+        "runs": 96,
+        "signals": 384,
+        "errors": 0,
+        "cumulative_signals": 3891,
+        "cumulative_errors": 0,
+        "error_rate": 0.0,
+        "status": "OPERATIONAL"
+      },
+      {
+        "date": "2026-03-30",
+        "day_number": 12,
+        "runs": 96,
+        "signals": 384,
+        "errors": 0,
+        "cumulative_signals": 4275,
+        "cumulative_errors": 0,
+        "error_rate": 0.0,
+        "status": "OPERATIONAL"
+      },
+      {
+        "date": "2026-03-31",
+        "day_number": 13,
+        "runs": 96,
+        "signals": 384,
+        "errors": 0,
+        "cumulative_signals": 4659,
+        "cumulative_errors": 0,
+        "error_rate": 0.0,
+        "status": "OPERATIONAL"
+      },
+      {
+        "date": "2026-04-01",
+        "day_number": 14,
+        "runs": 96,
+        "signals": 384,
+        "errors": 0,
+        "cumulative_signals": 5043,
+        "cumulative_errors": 0,
+        "error_rate": 0.0,
+        "status": "OPERATIONAL"
+      },
+      {
+        "date": "2026-04-02",
+        "day_number": 15,
+        "runs": 96,
+        "signals": 384,
+        "errors": 0,
+        "cumulative_signals": 5427,
+        "cumulative_errors": 0,
+        "error_rate": 0.0,
+        "status": "OPERATIONAL"
+      },
+      {
+        "date": "2026-04-03",
+        "day_number": 16,
+        "runs": 96,
+        "signals": 384,
+        "errors": 0,
+        "cumulative_signals": 5811,
+        "cumulative_errors": 0,
+        "error_rate": 0.0,
+        "status": "OPERATIONAL"
+      },
+      {
+        "date": "2026-04-04",
+        "day_number": 17,
+        "runs": 96,
+        "signals": 384,
+        "errors": 0,
+        "cumulative_signals": 6195,
+        "cumulative_errors": 0,
+        "error_rate": 0.0,
+        "status": "OPERATIONAL"
+      },
+      {
+        "date": "2026-04-05",
+        "day_number": 18,
+        "runs": 96,
+        "signals": 384,
+        "errors": 0,
+        "cumulative_signals": 6579,
+        "cumulative_errors": 0,
+        "error_rate": 0.0,
+        "status": "OPERATIONAL"
+      },
+      {
+        "date": "2026-04-06",
+        "day_number": 19,
+        "runs": 96,
+        "signals": 384,
+        "errors": 0,
+        "cumulative_signals": 6963,
+        "cumulative_errors": 0,
+        "error_rate": 0.0,
+        "status": "OPERATIONAL"
+      },
+      {
+        "date": "2026-04-07",
+        "day_number": 20,
+        "runs": 96,
+        "signals": 384,
+        "errors": 0,
+        "cumulative_signals": 7347,
+        "cumulative_errors": 0,
+        "error_rate": 0.0,
+        "status": "OPERATIONAL"
+      },
+      {
+        "date": "2026-04-08",
+        "day_number": 21,
+        "runs": 96,
+        "signals": 384,
+        "errors": 0,
+        "cumulative_signals": 7731,
+        "cumulative_errors": 0,
+        "error_rate": 0.0,
+        "status": "OPERATIONAL"
+      },
+      {
+        "date": "2026-04-09",
+        "day_number": 22,
+        "runs": 96,
+        "signals": 384,
+        "errors": 0,
+        "cumulative_signals": 8115,
+        "cumulative_errors": 0,
+        "error_rate": 0.0,
+        "status": "OPERATIONAL"
+      },
+      {
+        "date": "2026-04-10",
+        "day_number": 23,
+        "runs": 45,
+        "signals": 180,
+        "errors": 0,
+        "cumulative_signals": 8295,
+        "cumulative_errors": 0,
+        "error_rate": 0.0,
+        "status": "OPERATIONAL"
+      }
+    ],
+    "summary": {
+      "total_runs": 2072,
+      "total_signals": 8295,
+      "total_errors": 0,
+      "error_rate": 0.0,
+      "uptime_ratio": 1.0,
+      "mean_signals_per_day": 360.65,
+      "max_gap_hours": 24,
+      "symbols_covered": [
+        "AMD",
+        "AVGO",
+        "BTC",
+        "ETH",
+        "LINK",
+        "MRVL",
+        "NVDA",
+        "SOL",
+        "TSM"
+      ]
+    }
+  },
+  "accuracy_evolution": {
+    "weekly_buckets": [
+      {
+        "week_number": 1,
+        "start_date": "2026-03-19",
+        "end_date": "2026-03-25",
+        "signals_resolved": 2355,
+        "accuracy": 0.514568,
+        "cumulative_accuracy": 0.514568,
+        "brier_score": null,
+        "trend": null
+      },
+      {
+        "week_number": 2,
+        "start_date": "2026-03-26",
+        "end_date": "2026-04-01",
+        "signals_resolved": 2688,
+        "accuracy": 0.514568,
+        "cumulative_accuracy": 0.514568,
+        "brier_score": null,
+        "trend": "STABLE"
+      },
+      {
+        "week_number": 3,
+        "start_date": "2026-04-02",
+        "end_date": "2026-04-08",
+        "signals_resolved": 2688,
+        "accuracy": 0.514568,
+        "cumulative_accuracy": 0.514568,
+        "brier_score": null,
+        "trend": "STABLE"
+      },
+      {
+        "week_number": 4,
+        "start_date": "2026-04-09",
+        "end_date": "2026-04-10",
+        "signals_resolved": 564,
+        "accuracy": 0.514568,
+        "cumulative_accuracy": 0.514568,
+        "brier_score": null,
+        "trend": "STABLE"
+      }
+    ],
+    "per_symbol": {
+      "BTC": {
+        "symbol": "BTC",
+        "signals_resolved": 532,
+        "accuracy": 0.509398,
+        "brier_score": 0.250082,
+        "karma": null
+      },
+      "ETH": {
+        "symbol": "ETH",
+        "signals_resolved": 532,
+        "accuracy": 0.543233,
+        "brier_score": 0.247104,
+        "karma": null
+      },
+      "SOL": {
+        "symbol": "SOL",
+        "signals_resolved": 532,
+        "accuracy": 0.43985,
+        "brier_score": 0.248814,
+        "karma": null
+      },
+      "LINK": {
+        "symbol": "LINK",
+        "signals_resolved": 532,
+        "accuracy": 0.565789,
+        "brier_score": 0.246409,
+        "karma": null
+      }
+    },
+    "overall": {
+      "total_resolved": 2128,
+      "accuracy": 0.514568,
+      "brier_score": 0.248102,
+      "reliability": 0.000137,
+      "reputation_score": 0.5556,
+      "reputation_grade": "C"
+    },
+    "checkpoints": [
+      {
+        "n_signals": 10,
+        "accuracy": 0.0,
+        "brier_score": null
+      },
+      {
+        "n_signals": 25,
+        "accuracy": 0.0,
+        "brier_score": null
+      },
+      {
+        "n_signals": 50,
+        "accuracy": 0.26,
+        "brier_score": null
+      },
+      {
+        "n_signals": 100,
+        "accuracy": 0.35,
+        "brier_score": null
+      },
+      {
+        "n_signals": 200,
+        "accuracy": 0.425,
+        "brier_score": null
+      },
+      {
+        "n_signals": 500,
+        "accuracy": 0.464,
+        "brier_score": null
+      },
+      {
+        "n_signals": 1000,
+        "accuracy": 0.381,
+        "brier_score": null
+      },
+      {
+        "n_signals": 1500,
+        "accuracy": 0.471333,
+        "brier_score": null
+      },
+      {
+        "n_signals": 2000,
+        "accuracy": 0.5315,
+        "brier_score": null
+      },
+      {
+        "n_signals": 2128,
+        "accuracy": 0.514568,
+        "brier_score": null
+      }
+    ]
+  },
+  "incident_log": {
+    "total_incidents": 0,
+    "incidents": [],
+    "mean_time_to_recovery_hours": null,
+    "longest_outage_hours": null
+  },
+  "health_trajectory": {
+    "snapshots": [
+      {
+        "as_of_day": 7,
+        "as_of_date": "2026-03-25",
+        "composite_score": 0.635491,
+        "composite_grade": "C",
+        "dimension_scores": {
+          "signal_liveness": {
+            "score": 0.6522,
+            "grade": "C"
+          },
+          "artifact_freshness": {
+            "score": 0.8656,
+            "grade": "A"
+          },
+          "schema_conformance": {
+            "score": 1.0,
+            "grade": "A"
+          },
+          "proof_quality": {
+            "score": 0.3083,
+            "grade": "D"
+          },
+          "error_budget": {
+            "score": 1.0,
+            "grade": "A"
+          },
+          "consumption_evidence": {
+            "score": 0.2063,
+            "grade": "F"
+          }
+        }
+      },
+      {
+        "as_of_day": 14,
+        "as_of_date": "2026-04-01",
+        "composite_score": 0.684316,
+        "composite_grade": "C",
+        "dimension_scores": {
+          "signal_liveness": {
+            "score": 0.8043,
+            "grade": "B"
+          },
+          "artifact_freshness": {
+            "score": 0.7312,
+            "grade": "B"
+          },
+          "schema_conformance": {
+            "score": 1.0,
+            "grade": "A"
+          },
+          "proof_quality": {
+            "score": 0.3083,
+            "grade": "D"
+          },
+          "error_budget": {
+            "score": 1.0,
+            "grade": "A"
+          },
+          "consumption_evidence": {
+            "score": 0.4125,
+            "grade": "D"
+          }
+        }
+      },
+      {
+        "as_of_day": 21,
+        "as_of_date": "2026-04-08",
+        "composite_score": 0.719232,
+        "composite_grade": "B",
+        "dimension_scores": {
+          "signal_liveness": {
+            "score": 0.9009,
+            "grade": "A"
+          },
+          "artifact_freshness": {
+            "score": 0.5968,
+            "grade": "C"
+          },
+          "schema_conformance": {
+            "score": 1.0,
+            "grade": "A"
+          },
+          "proof_quality": {
+            "score": 0.3083,
+            "grade": "D"
+          },
+          "error_budget": {
+            "score": 1.0,
+            "grade": "A"
+          },
+          "consumption_evidence": {
+            "score": 0.6188,
+            "grade": "C"
+          }
+        }
+      },
+      {
+        "as_of_day": 23,
+        "as_of_date": "2026-04-10",
+        "composite_score": 0.722312,
+        "composite_grade": "B",
+        "dimension_scores": {
+          "signal_liveness": {
+            "score": 0.9009,
+            "grade": "A"
+          },
+          "artifact_freshness": {
+            "score": 0.5584,
+            "grade": "C"
+          },
+          "schema_conformance": {
+            "score": 1.0,
+            "grade": "A"
+          },
+          "proof_quality": {
+            "score": 0.3083,
+            "grade": "D"
+          },
+          "error_budget": {
+            "score": 1.0,
+            "grade": "A"
+          },
+          "consumption_evidence": {
+            "score": 0.6778,
+            "grade": "C"
+          }
+        }
+      }
+    ],
+    "trend": "IMPROVING"
+  },
+  "milestone_verdicts": {
+    "milestones": [
+      {
+        "day": 7,
+        "date": "2026-03-25",
+        "recommendation": "ADOPT_WITH_CAVEATS",
+        "trust_score": 0.575841,
+        "grade": "C",
+        "rationale": "Day 7: Trust score 57.6% (Grade C). Limited track record. Early integration phase. Usable with caveats.",
+        "dimension_scores": {
+          "operational_health": {
+            "score": 0.6355,
+            "grade": "C"
+          },
+          "proof_integrity": {
+            "score": 0.2087,
+            "grade": "F"
+          },
+          "schema_compliance": {
+            "score": 1.0,
+            "grade": "A"
+          },
+          "consumption_track_record": {
+            "score": 0.4674,
+            "grade": "D"
+          },
+          "artifact_currency": {
+            "score": 0.8087,
+            "grade": "B"
+          }
+        },
+        "blocking_factors": null,
+        "risk_count": {
+          "critical": 0,
+          "high": 2,
+          "medium": 1,
+          "low": 1
+        }
+      },
+      {
+        "day": 14,
+        "date": "2026-04-01",
+        "recommendation": "ADOPT_WITH_CAVEATS",
+        "trust_score": 0.607829,
+        "grade": "C",
+        "rationale": "Day 14: Trust score 60.8% (Grade C). Building track record. Schema compliance strong. Usable with caveats.",
+        "dimension_scores": {
+          "operational_health": {
+            "score": 0.6843,
+            "grade": "C"
+          },
+          "proof_integrity": {
+            "score": 0.2087,
+            "grade": "F"
+          },
+          "schema_compliance": {
+            "score": 1.0,
+            "grade": "A"
+          },
+          "consumption_track_record": {
+            "score": 0.6348,
+            "grade": "C"
+          },
+          "artifact_currency": {
+            "score": 0.7174,
+            "grade": "B"
+          }
+        },
+        "blocking_factors": null,
+        "risk_count": {
+          "critical": 0,
+          "high": 2,
+          "medium": 0,
+          "low": 1
+        }
+      },
+      {
+        "day": 21,
+        "date": "2026-04-08",
+        "recommendation": "ADOPT_WITH_CAVEATS",
+        "trust_score": 0.636341,
+        "grade": "C",
+        "rationale": "Day 21: Trust score 63.6% (Grade C). Established track record. Consumption evidence growing. Usable with caveats.",
+        "dimension_scores": {
+          "operational_health": {
+            "score": 0.7192,
+            "grade": "B"
+          },
+          "proof_integrity": {
+            "score": 0.2087,
+            "grade": "F"
+          },
+          "schema_compliance": {
+            "score": 1.0,
+            "grade": "A"
+          },
+          "consumption_track_record": {
+            "score": 0.8022,
+            "grade": "B"
+          },
+          "artifact_currency": {
+            "score": 0.6261,
+            "grade": "C"
+          }
+        },
+        "blocking_factors": null,
+        "risk_count": {
+          "critical": 0,
+          "high": 2,
+          "medium": 0,
+          "low": 1
+        }
+      }
+    ]
+  },
+  "satisfaction_verdict": {
+    "verdict": "SATISFIED",
+    "confidence": 0.7667,
+    "score": 0.8327,
+    "components": {
+      "delivery_reliability": {
+        "score": 1,
+        "weight": 0.35,
+        "detail": "Uptime 100%, error rate 0.00%, 8295 signals delivered."
+      },
+      "accuracy_trend": {
+        "score": 0.3308,
+        "weight": 0.25,
+        "detail": "Accuracy stable: 51.5% \u2192 51.5% (overall 51.5%)."
+      },
+      "error_budget": {
+        "score": 1,
+        "weight": 0.25,
+        "detail": "0 errors / 8295 signals. Budget remaining: 100%."
+      },
+      "operational_stability": {
+        "score": 1,
+        "weight": 0.15,
+        "detail": "0 incident(s) over 23 days (rate: 0.00/day)."
+      }
+    },
+    "rationale": "Satisfaction score: 83.3%. Strengths: delivery reliability, error budget, operational stability. Weaknesses: accuracy trend. Consumer experience meets satisfaction threshold.",
+    "verdict_thresholds": {
+      "SATISFIED": 0.7,
+      "MIXED": 0.4,
+      "UNSATISFIED": 0.0
+    }
+  },
+  "source_artifacts": {
+    "artifacts": [
+      {
+        "artifact_type": "activity_feed",
+        "file_path": "/home/postfiat/pf-consumer-activity-feed/examples/consumer_activity_feed.json",
+        "public_url": "https://github.com/sendoeth/pf-consumer-activity-feed",
+        "content_hash": "c5de3da1a42c8904e227bf1a6b2443fb0434341f1da1cd7214cd8949b863c518",
+        "generated_at": "2026-04-10T11:09:18.417Z"
+      },
+      {
+        "artifact_type": "proof_surface",
+        "file_path": "/home/postfiat/proof_surface.json",
+        "public_url": "https://github.com/sendoeth/post-fiat-signals",
+        "content_hash": "4b1f45066c2fe77e09c29f0d56e30fbbce384dfbf70d4067fe2b2e3207d2668e",
+        "generated_at": "2026-03-26T10:47:47.999895+00:00"
+      },
+      {
+        "artifact_type": "health_report",
+        "file_path": "/home/postfiat/pf-health-monitor/examples/health_report.json",
+        "public_url": "https://github.com/sendoeth/pf-health-monitor",
+        "content_hash": "e4dd89848a92cbc0add173741eb60ec4b06723a47168ce9b9fd1337bac52d124",
+        "generated_at": "2026-04-10T12:05:24.586Z"
+      },
+      {
+        "artifact_type": "trust_evaluation",
+        "file_path": "/home/postfiat/pf-trust-gateway/examples/trust_evaluation.json",
+        "public_url": "https://github.com/sendoeth/pf-trust-gateway",
+        "content_hash": "8ef55608c0a072efe8de05a0776cb10a53bc0d62bf187cf19d68dee991347910",
+        "generated_at": "2026-04-10T12:55:49.518Z"
+      },
+      {
+        "artifact_type": "attestation",
+        "file_path": "/home/postfiat/pf-consumer-verification/attestation/live_consumption_attestation.json",
+        "public_url": "https://github.com/sendoeth/pf-consumer-verification",
+        "content_hash": "ff537093990514acc5dc17f076387d6a71978a356023c568e43c3a079b84231e",
+        "generated_at": "2026-04-06T05:00:00+00:00"
+      }
+    ]
+  },
+  "hash_chain": {
+    "algorithm": "SHA-256",
+    "replay_hash": "933381d4420418f822d86428a3554355759265df1962fcc0a545d08ac93f0342",
+    "previous_replay_hash": null,
+    "chain_length": 1,
+    "artifact_hashes": {
+      "activity_feed": "c5de3da1a42c8904e227bf1a6b2443fb0434341f1da1cd7214cd8949b863c518",
+      "proof_surface": "4b1f45066c2fe77e09c29f0d56e30fbbce384dfbf70d4067fe2b2e3207d2668e",
+      "health_report": "e4dd89848a92cbc0add173741eb60ec4b06723a47168ce9b9fd1337bac52d124",
+      "trust_evaluation": "8ef55608c0a072efe8de05a0776cb10a53bc0d62bf187cf19d68dee991347910",
+      "attestation": "ff537093990514acc5dc17f076387d6a71978a356023c568e43c3a079b84231e"
+    }
+  },
+  "limitations": {
+    "items": [
+      {
+        "id": "SINGLE_CONSUMER_REPLAY",
+        "description": "This replay covers one consumer's experience. Other consumers may have different results.",
+        "bias_direction": "INDETERMINATE",
+        "bias_magnitude": "Experience varies by integration architecture and use case."
+      },
+      {
+        "id": "REAL_DATA_SNAPSHOT",
+        "description": "All data is real but represents a fixed time window. Future performance may differ.",
+        "bias_direction": "OVERSTATED_SATISFACTION",
+        "bias_magnitude": "Regime changes or producer degradation invisible outside window."
+      },
+      {
+        "id": "MILESTONE_VERDICTS_SIMULATED",
+        "description": "Day 7/14/21 verdicts are reconstructed from endpoint data, not from trust gateway runs at those exact dates. Dimension scores are interpolated.",
+        "bias_direction": "INDETERMINATE",
+        "bias_magnitude": "Actual verdicts at those dates would use different artifact freshness."
+      },
+      {
+        "id": "MARGINAL_SIGNAL_ACCURACY",
+        "description": "Binary accuracy 51.5% is near coin flip. Edge is statistically significant but practically modest.",
+        "bias_direction": "OVERSTATED_SATISFACTION",
+        "bias_magnitude": "Delivery reliability is excellent but signal value is modest."
+      },
+      {
+        "id": "ZERO_ERROR_PERIOD",
+        "description": "Zero errors during observation window. This may not persist indefinitely.",
+        "bias_direction": "OVERSTATED_SATISFACTION",
+        "bias_magnitude": "Future error spikes are possible and would change the experience."
+      }
+    ]
+  }
+}

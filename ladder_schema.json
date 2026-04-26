@@ -1,0 +1,301 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/sendoeth/pf-consumer-adoption-ladder/ladder_schema.json",
+  "title": "Consumer Adoption Ladder Report",
+  "description": "Five-stage adoption ladder report mapping a consumer from DISCOVER to TRUST.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "meta",
+    "stages",
+    "current_stage",
+    "next_command",
+    "progress_summary",
+    "hash_chain",
+    "limitations"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "meta": { "$ref": "#/$defs/report_meta" },
+    "stages": {
+      "type": "object",
+      "required": ["DISCOVER", "EVALUATE", "INTEGRATE", "MONITOR", "TRUST"],
+      "additionalProperties": false,
+      "properties": {
+        "DISCOVER": { "$ref": "#/$defs/stage_result" },
+        "EVALUATE": { "$ref": "#/$defs/stage_result" },
+        "INTEGRATE": { "$ref": "#/$defs/stage_result" },
+        "MONITOR": { "$ref": "#/$defs/stage_result" },
+        "TRUST": { "$ref": "#/$defs/stage_result" }
+      }
+    },
+    "current_stage": { "$ref": "#/$defs/stage_enum" },
+    "next_command": {
+      "type": ["string", "null"],
+      "description": "Exact CLI command the consumer should run next. Null only when current_stage is TRUST and all stages PASSED."
+    },
+    "progress_summary": { "$ref": "#/$defs/progress_summary" },
+    "hash_chain": { "$ref": "#/$defs/hash_chain" },
+    "limitations": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/limitation" },
+      "minItems": 4
+    }
+  },
+  "$defs": {
+    "report_meta": {
+      "type": "object",
+      "required": [
+        "report_id",
+        "generated_at",
+        "generator_version",
+        "content_hash",
+        "artifacts_dir",
+        "producer_id"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "report_id": {
+          "type": "string",
+          "pattern": "^CAL-[A-F0-9]{12}$"
+        },
+        "generated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "generator_version": {
+          "type": "string",
+          "const": "1.0.0"
+        },
+        "content_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "artifacts_dir": {
+          "type": "string"
+        },
+        "producer_id": {
+          "type": "string"
+        }
+      }
+    },
+    "stage_enum": {
+      "type": "string",
+      "enum": ["DISCOVER", "EVALUATE", "INTEGRATE", "MONITOR", "TRUST"]
+    },
+    "stage_status": {
+      "type": "string",
+      "enum": ["PASSED", "BLOCKED", "SKIPPED", "NOT_REACHED"]
+    },
+    "stage_result": {
+      "type": "object",
+      "required": [
+        "stage_id",
+        "status",
+        "prerequisites",
+        "completion_criteria",
+        "checks",
+        "blockers",
+        "remediation",
+        "source_artifacts",
+        "receipt"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "stage_id": { "$ref": "#/$defs/stage_enum" },
+        "status": { "$ref": "#/$defs/stage_status" },
+        "prerequisites": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/prerequisite" }
+        },
+        "completion_criteria": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/criterion" }
+        },
+        "checks": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/check_result" }
+        },
+        "blockers": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/blocker" }
+        },
+        "remediation": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/remediation_item" }
+        },
+        "source_artifacts": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/source_artifact" }
+        },
+        "receipt": { "$ref": "#/$defs/stage_receipt" }
+      }
+    },
+    "prerequisite": {
+      "type": "object",
+      "required": ["id", "description", "met"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^PRE-[A-Z]+-\\d+$" },
+        "description": { "type": "string" },
+        "met": { "type": "boolean" }
+      }
+    },
+    "criterion": {
+      "type": "object",
+      "required": ["id", "description", "met", "evidence"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^CRI-[A-Z]+-\\d+$" },
+        "description": { "type": "string" },
+        "met": { "type": "boolean" },
+        "evidence": { "type": ["string", "null"] }
+      }
+    },
+    "check_result": {
+      "type": "object",
+      "required": ["check_id", "name", "passed", "detail", "tool"],
+      "additionalProperties": false,
+      "properties": {
+        "check_id": { "type": "string", "pattern": "^CHK-[A-Z]+-\\d+$" },
+        "name": { "type": "string" },
+        "passed": { "type": "boolean" },
+        "detail": { "type": "string" },
+        "tool": { "type": "string" }
+      }
+    },
+    "blocker": {
+      "type": "object",
+      "required": ["blocker_id", "severity", "description", "stage_blocked"],
+      "additionalProperties": false,
+      "properties": {
+        "blocker_id": { "type": "string", "pattern": "^BLK-[A-Z]+-\\d+$" },
+        "severity": { "$ref": "#/$defs/severity_enum" },
+        "description": { "type": "string" },
+        "stage_blocked": { "$ref": "#/$defs/stage_enum" }
+      }
+    },
+    "severity_enum": {
+      "type": "string",
+      "enum": ["CRITICAL", "HIGH", "MEDIUM", "LOW"]
+    },
+    "remediation_item": {
+      "type": "object",
+      "required": ["remediation_id", "command", "description", "resolves_blocker"],
+      "additionalProperties": false,
+      "properties": {
+        "remediation_id": { "type": "string", "pattern": "^REM-[A-Z]+-\\d+$" },
+        "command": { "type": "string" },
+        "description": { "type": "string" },
+        "resolves_blocker": { "type": ["string", "null"] }
+      }
+    },
+    "source_artifact": {
+      "type": "object",
+      "required": ["artifact_id", "name", "url", "role"],
+      "additionalProperties": false,
+      "properties": {
+        "artifact_id": { "type": "string", "pattern": "^ART-[A-Z]+-\\d+$" },
+        "name": { "type": "string" },
+        "url": { "type": "string" },
+        "role": { "type": "string" }
+      }
+    },
+    "stage_receipt": {
+      "type": "object",
+      "required": ["stage_hash", "inputs_hash", "timestamp", "passed"],
+      "additionalProperties": false,
+      "properties": {
+        "stage_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "inputs_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "passed": { "type": "boolean" }
+      }
+    },
+    "progress_summary": {
+      "type": "object",
+      "required": [
+        "stages_passed",
+        "stages_blocked",
+        "stages_not_reached",
+        "total_checks",
+        "checks_passed",
+        "completion_pct",
+        "grade"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "stages_passed": { "type": "integer", "minimum": 0, "maximum": 5 },
+        "stages_blocked": { "type": "integer", "minimum": 0, "maximum": 5 },
+        "stages_not_reached": { "type": "integer", "minimum": 0, "maximum": 5 },
+        "total_checks": { "type": "integer", "minimum": 0 },
+        "checks_passed": { "type": "integer", "minimum": 0 },
+        "completion_pct": { "type": "number", "minimum": 0, "maximum": 100 },
+        "grade": { "type": "string", "enum": ["A", "B", "C", "D", "F"] }
+      }
+    },
+    "hash_chain": {
+      "type": "object",
+      "required": [
+        "algorithm",
+        "report_hash",
+        "previous_report_hash",
+        "chain_length",
+        "stage_hashes"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "algorithm": { "type": "string", "const": "SHA-256" },
+        "report_hash": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "previous_report_hash": { "type": ["string", "null"], "pattern": "^[0-9a-f]{64}$" },
+        "chain_length": { "type": "integer", "minimum": 1 },
+        "stage_hashes": {
+          "type": "object",
+          "required": ["DISCOVER", "EVALUATE", "INTEGRATE", "MONITOR", "TRUST"],
+          "additionalProperties": false,
+          "properties": {
+            "DISCOVER": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+            "EVALUATE": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+            "INTEGRATE": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+            "MONITOR": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+            "TRUST": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+          }
+        }
+      }
+    },
+    "limitation": {
+      "type": "object",
+      "required": ["id", "description", "bias_direction", "bias_magnitude"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^L\\d+$" },
+        "description": { "type": "string" },
+        "bias_direction": {
+          "type": "string",
+          "enum": [
+            "OVERSTATED_READINESS",
+            "UNDERSTATED_READINESS",
+            "INDETERMINATE"
+          ]
+        },
+        "bias_magnitude": {
+          "type": "string",
+          "enum": ["LOW", "MODERATE", "HIGH"]
+        }
+      }
+    }
+  }
+}

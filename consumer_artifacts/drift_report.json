@@ -1,0 +1,287 @@
+{
+  "schema_version": "1.0.0",
+  "meta": {
+    "report_id": "CDM-20260423101026",
+    "generated_at": "2026-04-23T10:10:26Z",
+    "generator_version": "1.0.0",
+    "content_hash": "aa73ac92a797efcde7b119d5b22a5416720a93ec88c1fef98cb423ac2b6865fe",
+    "source_artifact": "../pf-consumer-backtest/resolved_signals.json",
+    "total_signals": 8676,
+    "window_size_days": 3.0,
+    "baseline_size": 2696
+  },
+  "adoption_baseline": {
+    "start_date": "2026-03-19T23:31:53Z",
+    "end_date": "2026-03-26T23:18:01Z",
+    "signal_count": 2696,
+    "accuracy": 0.458828,
+    "brier_score": 0.253634,
+    "karma": -0.041709,
+    "per_symbol": {
+      "BTC": {
+        "signal_count": 674,
+        "accuracy": 0.402077,
+        "brier_score": 0.267245,
+        "karma": -0.107795
+      },
+      "ETH": {
+        "signal_count": 674,
+        "accuracy": 0.428783,
+        "brier_score": 0.250965,
+        "karma": -0.070405
+      },
+      "LINK": {
+        "signal_count": 674,
+        "accuracy": 0.446588,
+        "brier_score": 0.250416,
+        "karma": -0.052186
+      },
+      "SOL": {
+        "signal_count": 674,
+        "accuracy": 0.557864,
+        "brier_score": 0.24591,
+        "karma": 0.06355
+      }
+    }
+  },
+  "current_window": {
+    "start_date": "2026-03-26T23:33:01Z",
+    "end_date": "2026-04-11T13:48:01Z",
+    "signal_count": 5980,
+    "accuracy": 0.548829,
+    "brier_score": 0.246213,
+    "karma": 0.054225,
+    "accuracy_delta": 0.090001,
+    "brier_delta": -0.007421,
+    "karma_delta": 0.095934
+  },
+  "rolling_windows": [
+    {
+      "window_id": 0,
+      "start_date": "2026-03-19T23:31:53Z",
+      "end_date": "2026-03-22T23:31:53Z",
+      "signal_count": 1160,
+      "accuracy": 0.431897,
+      "brier_score": 0.252133,
+      "karma": -0.065169
+    },
+    {
+      "window_id": 1,
+      "start_date": "2026-03-22T23:31:53Z",
+      "end_date": "2026-03-25T23:31:53Z",
+      "signal_count": 1152,
+      "accuracy": 0.555556,
+      "brier_score": 0.248238,
+      "karma": 0.058928
+    },
+    {
+      "window_id": 2,
+      "start_date": "2026-03-25T23:31:53Z",
+      "end_date": "2026-03-28T23:31:53Z",
+      "signal_count": 1152,
+      "accuracy": 0.413194,
+      "brier_score": 0.259299,
+      "karma": -0.094494
+    },
+    {
+      "window_id": 3,
+      "start_date": "2026-03-28T23:31:53Z",
+      "end_date": "2026-03-31T23:31:53Z",
+      "signal_count": 1152,
+      "accuracy": 0.708333,
+      "brier_score": 0.23686,
+      "karma": 0.223083
+    },
+    {
+      "window_id": 4,
+      "start_date": "2026-03-31T23:31:53Z",
+      "end_date": "2026-04-03T23:31:53Z",
+      "signal_count": 1152,
+      "accuracy": 0.420139,
+      "brier_score": 0.253196,
+      "karma": -0.081447
+    },
+    {
+      "window_id": 5,
+      "start_date": "2026-04-03T23:31:53Z",
+      "end_date": "2026-04-06T23:31:53Z",
+      "signal_count": 1152,
+      "accuracy": 0.503472,
+      "brier_score": 0.250242,
+      "karma": 0.00484
+    },
+    {
+      "window_id": 6,
+      "start_date": "2026-04-06T23:31:53Z",
+      "end_date": "2026-04-09T23:31:53Z",
+      "signal_count": 1152,
+      "accuracy": 0.607639,
+      "brier_score": 0.239921,
+      "karma": 0.119328
+    },
+    {
+      "window_id": 7,
+      "start_date": "2026-04-09T23:31:53Z",
+      "end_date": "2026-04-12T23:31:53Z",
+      "signal_count": 604,
+      "accuracy": 0.533113,
+      "brier_score": 0.247985,
+      "karma": 0.036728
+    }
+  ],
+  "cusum_verdicts": {
+    "accuracy": {
+      "verdict": "DRIFT_DETECTED",
+      "cusum_value": 38.16269,
+      "threshold": 2.491972,
+      "drift_detected_at_signal": 253,
+      "direction": "IMPROVING"
+    },
+    "brier": {
+      "verdict": "DRIFT_DETECTED",
+      "cusum_value": 0.478357,
+      "threshold": 0.243158,
+      "drift_detected_at_signal": 356,
+      "direction": "IMPROVING"
+    },
+    "karma": {
+      "verdict": "DRIFT_DETECTED",
+      "cusum_value": 41.014574,
+      "threshold": 2.634132,
+      "drift_detected_at_signal": 249,
+      "direction": "IMPROVING"
+    }
+  },
+  "sprt_verdicts": {
+    "accuracy": {
+      "verdict": "NO_DRIFT",
+      "log_likelihood_ratio": -4069.884814,
+      "upper_bound": 2.890372,
+      "lower_bound": -2.251292,
+      "samples_used": 5980,
+      "decision": "ACCEPT_H0"
+    },
+    "brier": {
+      "verdict": "NO_DRIFT",
+      "log_likelihood_ratio": -3902.553938,
+      "upper_bound": 2.890372,
+      "lower_bound": -2.251292,
+      "samples_used": 5980,
+      "decision": "ACCEPT_H0"
+    },
+    "karma": {
+      "verdict": "NO_DRIFT",
+      "log_likelihood_ratio": -4078.951092,
+      "upper_bound": 2.890372,
+      "lower_bound": -2.251292,
+      "samples_used": 5980,
+      "decision": "ACCEPT_H0"
+    }
+  },
+  "regime_conditional": {
+    "SYSTEMIC": {
+      "signal_count": 5980,
+      "accuracy": 0.548829,
+      "brier_score": 0.246213,
+      "karma": 0.054225,
+      "accuracy_vs_baseline": 0.090001,
+      "drift_status": "IMPROVING"
+    }
+  },
+  "alert_summary": {
+    "overall_severity": "LOW",
+    "alert_count": 3,
+    "alerts": [
+      {
+        "alert_id": "ALERT-000",
+        "severity": "LOW",
+        "metric": "accuracy",
+        "description": "CUSUM detects accuracy drift (IMPROVING direction).",
+        "evidence": "CUSUM value 38.1627 > threshold 2.4920."
+      },
+      {
+        "alert_id": "ALERT-001",
+        "severity": "LOW",
+        "metric": "brier",
+        "description": "CUSUM detects brier drift (IMPROVING direction).",
+        "evidence": "CUSUM value 0.4784 > threshold 0.2432."
+      },
+      {
+        "alert_id": "ALERT-002",
+        "severity": "LOW",
+        "metric": "karma",
+        "description": "CUSUM detects karma drift (IMPROVING direction).",
+        "evidence": "CUSUM value 41.0146 > threshold 2.6341."
+      }
+    ]
+  },
+  "remediation": {
+    "items": [
+      {
+        "severity": "LOW",
+        "issue": "Accuracy has degraded relative to adoption baseline.",
+        "action": "Re-run consumer tuner to check if threshold or symbol policy adjustments improve accuracy.",
+        "command": "python3 tune_consumer.py --signals resolved_signals.json -o tuning_report.json"
+      },
+      {
+        "severity": "LOW",
+        "issue": "Brier score (calibration) has worsened relative to adoption baseline.",
+        "action": "Check confidence calibration and consider recalibrating the producer adapter.",
+        "command": "python3 backtest_runner.py --signals resolved_signals.json -o backtest_report.json"
+      },
+      {
+        "severity": "LOW",
+        "issue": "Karma (risk-adjusted return) has degraded relative to adoption baseline.",
+        "action": "Run signal forensics to identify which gates or symbols are causing karma drag.",
+        "command": "python3 trace_signal.py --signals resolved_signals.json -o forensic_report.json"
+      }
+    ]
+  },
+  "hash_chain": {
+    "algorithm": "SHA-256",
+    "report_hash": "aa73ac92a797efcde7b119d5b22a5416720a93ec88c1fef98cb423ac2b6865fe",
+    "previous_report_hash": null,
+    "chain_length": 1,
+    "artifact_hashes": {
+      "resolved_signals": "7804b6a6cff5cae0d7c4372f0a3f1ae2c20299eb20567e779ae1a825c92b00a9"
+    }
+  },
+  "limitations": [
+    {
+      "id": "L01",
+      "description": "Adoption baseline window is a fixed calendar slice. If the baseline period was atypically good or bad, drift detection may be biased.",
+      "bias_direction": "INDETERMINATE",
+      "bias_magnitude": "MODERATE"
+    },
+    {
+      "id": "L02",
+      "description": "CUSUM and SPRT assume approximately stationary variance. Regime transitions may cause variance spikes that trigger false drift alarms.",
+      "bias_direction": "OVERSTATED_DRIFT",
+      "bias_magnitude": "MODERATE"
+    },
+    {
+      "id": "L03",
+      "description": "Rolling windows use fixed calendar boundaries. Uneven signal density across windows may produce noisy accuracy estimates in sparse windows.",
+      "bias_direction": "INDETERMINATE",
+      "bias_magnitude": "LOW"
+    },
+    {
+      "id": "L04",
+      "description": "Regime-conditional analysis requires sufficient per-regime sample size. Regimes with fewer than 10 signals are marked INSUFFICIENT_DATA but regime boundaries themselves are not validated.",
+      "bias_direction": "UNDERSTATED_DRIFT",
+      "bias_magnitude": "LOW"
+    },
+    {
+      "id": "L05",
+      "description": "Karma computation uses simple confidence-weighted accuracy. It does not account for position sizing, correlation structure, or portfolio-level effects.",
+      "bias_direction": "INDETERMINATE",
+      "bias_magnitude": "MODERATE"
+    },
+    {
+      "id": "L06",
+      "description": "SPRT delta is set to 1.0 standard deviations. This trades detection speed for sensitivity \u2014 subtle degradation below 1 sigma may not trigger an alert.",
+      "bias_direction": "UNDERSTATED_DRIFT",
+      "bias_magnitude": "LOW"
+    }
+  ]
+}

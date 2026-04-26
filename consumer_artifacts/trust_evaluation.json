@@ -1,0 +1,498 @@
+{
+  "gateway_version": "1.0.0",
+  "meta": {
+    "evaluation_id": "TG-20260410T125549Z",
+    "generated_at": "2026-04-10T12:55:49.518Z",
+    "generator_version": "1.0.0",
+    "content_hash": "ff5cc9d1c88b90e9578d378cd927ce2ed0ebca7b0e4457ada55e4aa98e3ef014",
+    "previous_evaluation_hash": null
+  },
+  "producer": {
+    "producer_id": "post-fiat-signals",
+    "wallet": "rfLJ4ZRnqmGFLAcMvCD56nKGbjpdTJmMqo",
+    "public_repos": [
+      "https://github.com/sendoeth/pf-signal-schema",
+      "https://github.com/sendoeth/pf-resolution-protocol",
+      "https://github.com/sendoeth/pf-routing-protocol",
+      "https://github.com/sendoeth/pf-aggregation-protocol",
+      "https://github.com/sendoeth/pf-proof-protocol",
+      "https://github.com/sendoeth/pf-lifecycle-pipeline",
+      "https://github.com/sendoeth/pf-consumer-audit",
+      "https://github.com/sendoeth/pf-discovery-protocol",
+      "https://github.com/sendoeth/pf-consumer-quickstart",
+      "https://github.com/sendoeth/pf-conformance-testkit",
+      "https://github.com/sendoeth/pf-price-feed-interop"
+    ]
+  },
+  "input_artifacts": {
+    "artifacts": [
+      {
+        "artifact_type": "health_report",
+        "file_path": "/home/postfiat/pf-health-monitor/examples/health_report.json",
+        "public_url": "https://github.com/sendoeth/pf-health-monitor",
+        "content_hash": "e4dd89848a92cbc0add173741eb60ec4b06723a47168ce9b9fd1337bac52d124",
+        "generated_at": "2026-04-10T12:05:24.586Z",
+        "age_hours": 0.84
+      },
+      {
+        "artifact_type": "proof_surface",
+        "file_path": "/home/postfiat/proof_surface.json",
+        "public_url": "https://github.com/sendoeth/post-fiat-signals",
+        "content_hash": "4b1f45066c2fe77e09c29f0d56e30fbbce384dfbf70d4067fe2b2e3207d2668e",
+        "generated_at": "2026-03-26T10:47:47.999895+00:00",
+        "age_hours": 362.13
+      },
+      {
+        "artifact_type": "activity_feed",
+        "file_path": "/home/postfiat/pf-consumer-activity-feed/examples/consumer_activity_feed.json",
+        "public_url": "https://github.com/sendoeth/pf-consumer-activity-feed",
+        "content_hash": "c5de3da1a42c8904e227bf1a6b2443fb0434341f1da1cd7214cd8949b863c518",
+        "generated_at": "2026-04-10T11:09:18.417Z",
+        "age_hours": 1.78
+      },
+      {
+        "artifact_type": "attestation",
+        "file_path": "/home/postfiat/pf-consumer-verification/attestation/live_consumption_attestation.json",
+        "public_url": "https://github.com/sendoeth/pf-consumer-verification",
+        "content_hash": "ff537093990514acc5dc17f076387d6a71978a356023c568e43c3a079b84231e",
+        "generated_at": "2026-04-06T05:00:00+00:00",
+        "age_hours": 103.93
+      }
+    ],
+    "missing_artifacts": null
+  },
+  "verdict": {
+    "recommendation": "ADOPT_WITH_CAVEATS",
+    "confidence": 1,
+    "composite_trust_score": 0.624588,
+    "grade": "C",
+    "rationale": "Composite trust score: 62.5% (Grade C). Strengths: operational health, schema compliance, consumption track record. Weaknesses: proof integrity. Producer is usable with noted caveats. Review risk factors before integrating.",
+    "dimension_scores": {
+      "operational_health": {
+        "score": 0.722312,
+        "grade": "B",
+        "weight": 0.25,
+        "source_field": "health_report.composite.score",
+        "detail": "Composite health 72.2%, all gates pass."
+      },
+      "proof_integrity": {
+        "score": 0.149539,
+        "grade": "F",
+        "weight": 0.25,
+        "source_field": "proof_surface.overall.brier_decomposition",
+        "detail": "Accuracy 51.5%, Brier 0.2481, 2128 resolved, reputation 0.5556."
+      },
+      "schema_compliance": {
+        "score": 1.0,
+        "grade": "A",
+        "weight": 0.15,
+        "source_field": "health_report.dimensions.schema_conformance.score",
+        "detail": "Schema conformance 100.0%."
+      },
+      "consumption_track_record": {
+        "score": 0.8425,
+        "grade": "B",
+        "weight": 0.2,
+        "source_field": "activity_feed.aggregate+attestation",
+        "detail": "1 consumer(s), 8295 signals, 23d span, 100% uptime; attestation present (age 104h)"
+      },
+      "artifact_currency": {
+        "score": 0.5875,
+        "grade": "C",
+        "weight": 0.15,
+        "source_field": "all_artifacts.generated_at",
+        "detail": "health_report: LIVE (1h); proof_surface: EXPIRED (362h); activity_feed: RECENT (2h); attestation: STALE (104h)"
+      }
+    },
+    "verdict_thresholds": {
+      "ADOPT": 0.75,
+      "ADOPT_WITH_CAVEATS": 0.55,
+      "WAIT": 0.35,
+      "AVOID": 0.0
+    },
+    "blocking_factors": null
+  },
+  "risk_factors": [
+    {
+      "risk_id": "MARGINAL_ACCURACY",
+      "severity": "HIGH",
+      "category": "SIGNAL_QUALITY",
+      "description": "Binary accuracy 51.5% is near coin-flip (50%). Edge is modest and may not survive transaction costs.",
+      "mitigation": "Weight signals conservatively. Use ensemble with other sources. Monitor accuracy drift via proof protocol.",
+      "source_field": "proof_surface.overall.brier_decomposition.accuracy",
+      "threshold": "< 55%"
+    },
+    {
+      "risk_id": "SINGLE_CONSUMER",
+      "severity": "HIGH",
+      "category": "SINGLE_POINT_OF_FAILURE",
+      "description": "Only 1 downstream consumer(s). No multi-consumer diversity to validate signal quality independently.",
+      "mitigation": "Acknowledge single-consumer risk in your integration. Plan independent validation of signal accuracy.",
+      "source_field": "activity_feed.aggregate.total_consumers",
+      "threshold": "<= 1"
+    },
+    {
+      "risk_id": "STALE_PROOF_SURFACE",
+      "severity": "MEDIUM",
+      "category": "ARTIFACT_STALENESS",
+      "description": "Proof surface is 362h (15d) old. Recent accuracy may differ.",
+      "mitigation": "Request the producer regenerate proof_surface.json with current forward-test data.",
+      "source_field": "proof_surface.meta.generated_at",
+      "threshold": "> 168h (7d)"
+    },
+    {
+      "risk_id": "LOW_PROOF_QUALITY",
+      "severity": "MEDIUM",
+      "category": "PROOF_INTEGRITY",
+      "description": "Proof quality dimension scored 30.8% (D). Proof surface may be stale or accuracy marginal.",
+      "mitigation": "Request proof surface refresh. Cross-check with your own signal resolution.",
+      "source_field": "health_report.dimensions.proof_quality.score",
+      "threshold": "Grade D or F"
+    },
+    {
+      "risk_id": "SELF_REPORTED_ARTIFACTS",
+      "severity": "LOW",
+      "category": "PROOF_INTEGRITY",
+      "description": "All artifacts are producer-generated. This evaluation checks structural validity and cross-consistency but cannot independently verify signal correctness.",
+      "mitigation": "Run your own signal resolution against market data to validate accuracy claims.",
+      "source_field": null,
+      "threshold": null
+    },
+    {
+      "risk_id": "POINT_IN_TIME_SNAPSHOT",
+      "severity": "INFO",
+      "category": "OPERATIONAL",
+      "description": "This evaluation is a snapshot. Producer health can change between evaluations.",
+      "mitigation": "Set up recurring trust evaluations via monitoring contract.",
+      "source_field": null,
+      "threshold": null
+    }
+  ],
+  "integration_checklist": [
+    {
+      "step_number": 1,
+      "action": "Clone the signal schema repository to understand the signal format.",
+      "verification_command": "git clone https://github.com/sendoeth/pf-signal-schema.git && python3 -c \"import json; s=json.load(open('pf-signal-schema/signal_schema.json')); print('Schema version:', s.get('title', 'OK'))\"",
+      "expected_outcome": "Schema file loads and prints title.",
+      "prerequisite_steps": null,
+      "artifact_url": "https://github.com/sendoeth/pf-signal-schema"
+    },
+    {
+      "step_number": 2,
+      "action": "Fetch or generate the latest health report for the producer.",
+      "verification_command": "git clone https://github.com/sendoeth/pf-health-monitor.git && python3 pf-health-monitor/check_health.py --help",
+      "expected_outcome": "check_health.py prints usage without errors.",
+      "prerequisite_steps": null,
+      "artifact_url": "https://github.com/sendoeth/pf-health-monitor"
+    },
+    {
+      "step_number": 3,
+      "action": "Run this trust gateway to get an adoption verdict.",
+      "verification_command": "git clone https://github.com/sendoeth/pf-trust-gateway.git && python3 pf-trust-gateway/evaluate_trust.py --health-report pf-health-monitor/examples/health_report.json --summary",
+      "expected_outcome": "Prints trust evaluation summary with verdict.",
+      "prerequisite_steps": [
+        2
+      ],
+      "artifact_url": "https://github.com/sendoeth/pf-trust-gateway"
+    },
+    {
+      "step_number": 4,
+      "action": "Verify the trust evaluation passes zero-trust checks.",
+      "verification_command": "python3 pf-trust-gateway/evaluate_trust.py --health-report pf-health-monitor/examples/health_report.json -o /tmp/my_evaluation.json && python3 pf-trust-gateway/verify_trust.py /tmp/my_evaluation.json",
+      "expected_outcome": "Verdict: PASS with 0 failures.",
+      "prerequisite_steps": [
+        2,
+        3
+      ],
+      "artifact_url": null
+    },
+    {
+      "step_number": 5,
+      "action": "Review risk factors and decide whether to proceed with integration.",
+      "verification_command": "python3 -c \"import json; e=json.load(open('/tmp/my_evaluation.json')); v=e['verdict']['recommendation']; risks=[r for r in e['risk_factors'] if r['severity'] in ('CRITICAL','HIGH')]; print(f'Verdict: {v}, Critical/High risks: {len(risks)}')\"",
+      "expected_outcome": "Verdict is ADOPT or ADOPT_WITH_CAVEATS with 0 CRITICAL risks.",
+      "prerequisite_steps": [
+        4
+      ],
+      "artifact_url": null
+    },
+    {
+      "step_number": 6,
+      "action": "Copy the minimum viable integration template and configure it.",
+      "verification_command": "python3 -c \"import json; e=json.load(open('/tmp/my_evaluation.json')); t=e['integration_template']; print(f'Template: {t[\"template_type\"]}, deps: {t[\"dependencies\"]}')\"",
+      "expected_outcome": "Template type is minimum_viable_integration with empty dependencies.",
+      "prerequisite_steps": [
+        4
+      ],
+      "artifact_url": null
+    },
+    {
+      "step_number": 7,
+      "action": "Start the adapter and consume first batch of signals.",
+      "verification_command": "python3 -c \"import json; e=json.load(open('/tmp/my_evaluation.json')); print(e['integration_template']['adapter_skeleton'][:200])\"",
+      "expected_outcome": "Adapter skeleton code prints without errors.",
+      "prerequisite_steps": [
+        6
+      ],
+      "artifact_url": null
+    },
+    {
+      "step_number": 8,
+      "action": "Configure post-integration monitoring per the monitoring contract.",
+      "verification_command": "python3 -c \"import json; e=json.load(open('/tmp/my_evaluation.json')); m=e['monitoring_contract']; print(f'Check every {m[\"check_interval_hours\"]}h, {len(m[\"alert_thresholds\"])} alert(s), {len(m[\"escalation_policy\"])} escalation level(s)')\"",
+      "expected_outcome": "Monitoring contract summary prints correctly.",
+      "prerequisite_steps": [
+        7
+      ],
+      "artifact_url": null
+    }
+  ],
+  "integration_template": {
+    "template_type": "minimum_viable_integration",
+    "language": "python",
+    "min_python_version": "3.8",
+    "dependencies": [],
+    "config": {
+      "producer_endpoint": "http://localhost:8080",
+      "poll_interval_seconds": 900,
+      "signal_schema_url": "https://github.com/sendoeth/pf-signal-schema",
+      "output_directory": "./signals"
+    },
+    "adapter_skeleton": "#!/usr/bin/env python3\n\"\"\"Minimum Viable Signal Consumer \u2014 polls and validates signals.\"\"\"\nimport json, hashlib, os, time, urllib.request\nfrom datetime import datetime, timezone\n\nPRODUCER_ENDPOINT = os.environ.get(\"PF_PRODUCER_ENDPOINT\", \"http://localhost:8080\")\nPOLL_INTERVAL = int(os.environ.get(\"PF_POLL_INTERVAL\", \"900\"))\nOUTPUT_DIR = os.environ.get(\"PF_OUTPUT_DIR\", \"./signals\")\n\nREQUIRED_FIELDS = [\"signal_id\", \"symbol\", \"direction\", \"confidence\", \"timestamp\"]\n\ndef fetch_signals():\n    \"\"\"Fetch latest signals from producer.\"\"\"\n    url = f\"{PRODUCER_ENDPOINT}/signals\"\n    req = urllib.request.Request(url, headers={\"Accept\": \"application/json\"})\n    with urllib.request.urlopen(req, timeout=30) as resp:\n        return json.loads(resp.read())\n\ndef validate_signal(sig):\n    \"\"\"Basic structural validation.\"\"\"\n    for field in REQUIRED_FIELDS:\n        if field not in sig:\n            return False, f\"Missing field: {field}\"\n    if sig[\"confidence\"] < 0 or sig[\"confidence\"] > 1:\n        return False, f\"Confidence out of range: {sig['confidence']}\"\n    if sig[\"direction\"] not in (\"BULLISH\", \"BEARISH\"):\n        return False, f\"Invalid direction: {sig['direction']}\"\n    return True, \"OK\"\n\ndef store_signal(sig):\n    \"\"\"Store signal to local JSON log.\"\"\"\n    os.makedirs(OUTPUT_DIR, exist_ok=True)\n    ts = datetime.now(timezone.utc).strftime(\"%Y%m%dT%H%M%SZ\")\n    path = os.path.join(OUTPUT_DIR, f\"signal_{ts}_{sig['signal_id'][:8]}.json\")\n    with open(path, \"w\") as f:\n        json.dump(sig, f, indent=2)\n    return path\n\ndef main():\n    print(f\"[consumer] Polling {PRODUCER_ENDPOINT} every {POLL_INTERVAL}s\")\n    while True:\n        try:\n            signals = fetch_signals()\n            for sig in (signals if isinstance(signals, list) else [signals]):\n                ok, msg = validate_signal(sig)\n                if ok:\n                    path = store_signal(sig)\n                    print(f\"[consumer] Stored {sig['signal_id'][:8]} -> {path}\")\n                else:\n                    print(f\"[consumer] REJECTED {sig.get('signal_id', '?')}: {msg}\")\n        except Exception as e:\n            print(f\"[consumer] ERROR: {e}\")\n        time.sleep(POLL_INTERVAL)\n\nif __name__ == \"__main__\":\n    main()",
+    "validation_command": "python3 -c \"exec(open('adapter.py').read().split('def main')[0]); print('Syntax OK')\""
+  },
+  "monitoring_contract": {
+    "alert_thresholds": [
+      {
+        "metric": "hours_since_last_signal",
+        "operator": ">",
+        "value": 4,
+        "severity": "MEDIUM",
+        "action": "Check producer liveness. May be transient downtime."
+      },
+      {
+        "metric": "hours_since_last_signal",
+        "operator": ">",
+        "value": 24,
+        "severity": "HIGH",
+        "action": "Producer may be offline. Check health report. Consider pausing consumption."
+      },
+      {
+        "metric": "hours_since_last_signal",
+        "operator": ">",
+        "value": 168,
+        "severity": "CRITICAL",
+        "action": "Producer is DEAD (7+ days). Pause consumption. Re-evaluate trust."
+      },
+      {
+        "metric": "error_rate",
+        "operator": ">",
+        "value": 0.05,
+        "severity": "MEDIUM",
+        "action": "Error rate above 5%. Monitor trend."
+      },
+      {
+        "metric": "error_rate",
+        "operator": ">",
+        "value": 0.2,
+        "severity": "CRITICAL",
+        "action": "Error rate above 20%. Pause consumption. Request producer investigation."
+      },
+      {
+        "metric": "composite_health_score",
+        "operator": "<",
+        "value": 0.5,
+        "severity": "HIGH",
+        "action": "Health dropped below C threshold. Review risk factors."
+      },
+      {
+        "metric": "composite_health_score",
+        "operator": "<",
+        "value": 0.3,
+        "severity": "CRITICAL",
+        "action": "Health at D/F level. Pause consumption. Full re-evaluation required."
+      },
+      {
+        "metric": "proof_surface_age_hours",
+        "operator": ">",
+        "value": 336,
+        "severity": "MEDIUM",
+        "action": "Proof surface older than 14 days. Request refresh."
+      },
+      {
+        "metric": "proof_surface_age_hours",
+        "operator": ">",
+        "value": 720,
+        "severity": "CRITICAL",
+        "action": "Proof surface older than 30 days. Accuracy claims are unverifiable."
+      }
+    ],
+    "check_interval_hours": 1,
+    "escalation_policy": [
+      {
+        "level": 1,
+        "condition": "Any MEDIUM alert fires.",
+        "action": "Log alert. Increase monitoring frequency to 15 minutes.",
+        "auto_remediation": true
+      },
+      {
+        "level": 2,
+        "condition": "Any HIGH alert fires or 2+ MEDIUM alerts simultaneous.",
+        "action": "Notify operator. Reduce signal weight in downstream decisions.",
+        "auto_remediation": false
+      },
+      {
+        "level": 3,
+        "condition": "Any CRITICAL alert fires.",
+        "action": "Pause signal consumption. Trigger full trust re-evaluation. Notify operator immediately.",
+        "auto_remediation": true
+      }
+    ],
+    "re_evaluation_trigger": "Any CRITICAL alert, OR composite health below 0.30, OR 30+ days since last evaluation. Run: python3 evaluate_trust.py --health-report <latest> --proof-surface <latest> --activity-feed <latest> -o re_eval.json"
+  },
+  "source_traceability": {
+    "sources": [
+      {
+        "source_id": "health_report",
+        "artifact_type": "health_report",
+        "file_path": "/home/postfiat/pf-health-monitor/examples/health_report.json",
+        "public_url": "https://github.com/sendoeth/pf-health-monitor",
+        "content_hash": "e4dd89848a92cbc0add173741eb60ec4b06723a47168ce9b9fd1337bac52d124"
+      },
+      {
+        "source_id": "proof_surface",
+        "artifact_type": "proof_surface",
+        "file_path": "/home/postfiat/proof_surface.json",
+        "public_url": "https://github.com/sendoeth/post-fiat-signals",
+        "content_hash": "4b1f45066c2fe77e09c29f0d56e30fbbce384dfbf70d4067fe2b2e3207d2668e"
+      },
+      {
+        "source_id": "activity_feed",
+        "artifact_type": "activity_feed",
+        "file_path": "/home/postfiat/pf-consumer-activity-feed/examples/consumer_activity_feed.json",
+        "public_url": "https://github.com/sendoeth/pf-consumer-activity-feed",
+        "content_hash": "c5de3da1a42c8904e227bf1a6b2443fb0434341f1da1cd7214cd8949b863c518"
+      },
+      {
+        "source_id": "attestation",
+        "artifact_type": "attestation",
+        "file_path": "/home/postfiat/pf-consumer-verification/attestation/live_consumption_attestation.json",
+        "public_url": "https://github.com/sendoeth/pf-consumer-verification",
+        "content_hash": "ff537093990514acc5dc17f076387d6a71978a356023c568e43c3a079b84231e"
+      }
+    ],
+    "field_map": {
+      "verdict.composite_trust_score": {
+        "source_id": "health_report",
+        "json_path": "$.composite.score",
+        "description": "Primary input to composite trust score."
+      },
+      "operational_health.score": {
+        "source_id": "health_report",
+        "json_path": "$.composite.score",
+        "description": "Health monitor composite score."
+      },
+      "operational_health.hard_gates": {
+        "source_id": "health_report",
+        "json_path": "$.composite.hard_gates",
+        "description": "Hard gate pass/fail status."
+      },
+      "proof_integrity.accuracy": {
+        "source_id": "proof_surface",
+        "json_path": "$.overall.brier_decomposition.accuracy.point",
+        "description": "Binary accuracy of resolved signals."
+      },
+      "proof_integrity.brier_score": {
+        "source_id": "proof_surface",
+        "json_path": "$.overall.brier_decomposition.brier_score",
+        "description": "Brier score calibration measure."
+      },
+      "proof_integrity.reputation": {
+        "source_id": "proof_surface",
+        "json_path": "$.producer_reputation_score_v2.composite_score",
+        "description": "Composite reputation score."
+      },
+      "proof_integrity.total_resolved": {
+        "source_id": "proof_surface",
+        "json_path": "$.signal_summary.total_resolved",
+        "description": "Total resolved signals in proof surface."
+      },
+      "schema_compliance.score": {
+        "source_id": "health_report",
+        "json_path": "$.dimensions.schema_conformance.score",
+        "description": "Schema conformance score from health report."
+      },
+      "consumption.total_consumers": {
+        "source_id": "activity_feed",
+        "json_path": "$.aggregate.total_consumers",
+        "description": "Number of downstream consumers."
+      },
+      "consumption.total_signals": {
+        "source_id": "activity_feed",
+        "json_path": "$.aggregate.total_signals_all_consumers",
+        "description": "Total signals consumed across all consumers."
+      },
+      "consumption.uptime_ratio": {
+        "source_id": "activity_feed",
+        "json_path": "$.consumers[0].continuity.uptime_ratio",
+        "description": "Fraction of days with successful deliveries."
+      },
+      "consumption.span_days": {
+        "source_id": "activity_feed",
+        "json_path": "$.consumers[0].continuity.calendar_span_days",
+        "description": "Days between first and most recent consumption."
+      },
+      "attestation.generated_at": {
+        "source_id": "attestation",
+        "json_path": "$.attestation.generated_at",
+        "description": "When the consumption attestation was generated."
+      }
+    }
+  },
+  "hash_chain": {
+    "algorithm": "SHA-256",
+    "evaluation_hash": "ff5cc9d1c88b90e9578d378cd927ce2ed0ebca7b0e4457ada55e4aa98e3ef014",
+    "previous_evaluation_hash": null,
+    "chain_length": 1,
+    "artifact_hashes": {
+      "health_report": "e4dd89848a92cbc0add173741eb60ec4b06723a47168ce9b9fd1337bac52d124",
+      "proof_surface": "4b1f45066c2fe77e09c29f0d56e30fbbce384dfbf70d4067fe2b2e3207d2668e",
+      "activity_feed": "c5de3da1a42c8904e227bf1a6b2443fb0434341f1da1cd7214cd8949b863c518",
+      "attestation": "ff537093990514acc5dc17f076387d6a71978a356023c568e43c3a079b84231e"
+    }
+  },
+  "limitations": {
+    "items": [
+      {
+        "id": "POINT_IN_TIME_EVALUATION",
+        "description": "This evaluation is a snapshot. Trust can degrade between evaluations.",
+        "bias_direction": "OVERSTATED_TRUST",
+        "bias_magnitude": "Transient failures between evaluations are invisible."
+      },
+      {
+        "id": "SELF_REPORTED_INPUTS",
+        "description": "All input artifacts are producer-generated. Structural validity is checked but factual accuracy cannot be independently verified without market data.",
+        "bias_direction": "OVERSTATED_TRUST",
+        "bias_magnitude": "A producer could ship structurally valid but factually wrong artifacts."
+      },
+      {
+        "id": "SINGLE_CONSUMER_ECOSYSTEM",
+        "description": "Only one downstream consumer exists. No multi-consumer diversity to cross-validate.",
+        "bias_direction": "OVERSTATED_TRUST",
+        "bias_magnitude": "Multi-consumer validation would provide stronger evidence."
+      },
+      {
+        "id": "STALE_PROOF_SURFACE",
+        "description": "Proof surface is 362h (15d) old. Accuracy may have changed since last proof generation.",
+        "bias_direction": "INDETERMINATE",
+        "bias_magnitude": "Historical proof may over- or under-state current accuracy."
+      },
+      {
+        "id": "MARGINAL_SIGNAL_ACCURACY",
+        "description": "Binary accuracy 51.5% is near coin flip. Edge is statistically significant but practically modest.",
+        "bias_direction": "INDETERMINATE",
+        "bias_magnitude": "Transaction costs could eliminate the modest edge."
+      }
+    ]
+  }
+}

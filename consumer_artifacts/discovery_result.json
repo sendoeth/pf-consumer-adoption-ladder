@@ -1,0 +1,60 @@
+{
+  "meta": {
+    "query_at": "2026-04-23T12:00:00Z",
+    "registry_url": "local",
+    "total_producers": 1,
+    "filters_applied": []
+  },
+  "producers": [
+    {
+      "producer_id": "sendoeth",
+      "display_name": "sendoeth",
+      "description": "Crypto signal producer with regime detection and weak symbol policy. BTC/ETH/SOL/LINK coverage. Forward-tested with proof surface.",
+      "endpoint_url": "https://github.com/sendoeth/post-fiat-signals",
+      "repository_url": "https://github.com/sendoeth/post-fiat-signals",
+      "capabilities": [
+        "crypto_signals",
+        "regime_detection",
+        "routing_policy",
+        "weak_symbol_policy",
+        "proof_surface",
+        "forward_testing",
+        "multi_symbol"
+      ],
+      "symbol_coverage": {
+        "symbols": ["BTC", "ETH", "SOL", "LINK"],
+        "symbol_count": 4,
+        "total_signals_emitted": 9056,
+        "total_signals_resolved": 8676
+      },
+      "reputation_summary": {
+        "score": 0.625,
+        "grade": "B",
+        "accuracy": 0.521,
+        "calibration": 0.992,
+        "n_resolved": 8676,
+        "last_resolved_at": "2026-04-13T00:00:00+00:00"
+      },
+      "proof_summary": {
+        "proof_surface_url": "https://raw.githubusercontent.com/sendoeth/post-fiat-signals/main/proof_surface.json",
+        "freshness_grade": "LIVE",
+        "drift_status": "STABLE",
+        "last_update_at": "2026-04-23T12:00:00+00:00"
+      },
+      "supported_protocols": {
+        "signal_schema": "1.0.0",
+        "resolution_protocol": "1.0.0",
+        "routing_protocol": "1.0.0"
+      },
+      "liveness": {
+        "status": "ONLINE",
+        "last_signal_at": "2026-04-23T11:45:00+00:00",
+        "uptime_pct": 99.9
+      },
+      "registration": {
+        "registered_at": "2026-03-19T00:00:00+00:00",
+        "schema_version": "1.0.0"
+      }
+    }
+  ]
+}
